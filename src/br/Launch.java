@@ -1,90 +1,76 @@
-package br;
+package br                                                          ;
+import  br   .display    .Display                                   ;
+import  br   .pixelfonte .Fontes                                    ;
+import  br   .sprites    .ImageLoader                               ;
+import  java .awt        .*                                         ;
+import  java .awt        .image.*                                   ;
+import  java .io         .*                                         ;
 
-// importes
-import br.display.Display;
-import br.pixelfonte.Fontes;
-import br.sprites.ImageLoader;
-import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
+public class Launch
+{
 
-public class Launch {
+    private static      Display loading                             ;
 
-    // variavel da tela
-    private static Display loading;
-    public static void main(String[] args) {
-
-        // Carrega as fontes usadas no jogo
-        Fontes.fontInit();
-
-        //inicia a tela de carregamento do game
-        loading = new Display("CARREGANDO...", 408,450,"/sprites/icon.png");
-
-        // tela de carregamento
-        BufferedImage icon; // imagem
-        Font font = null; // fonte
-        ImageLoader il = new ImageLoader(); // carregador de imagens
-
-        //carrega a imagem
-        try{
-            icon = il.loadImage("/sprites/icon.png");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public  static void main(String[] args                      )
+    {
+        Fontes  .fontInit   (                                   )   ;
+        loading                 = new Display(  "CARREGANDO..."     ,
+                                                408                 ,
+                                                450                 ,
+                                                "/sprites/icon.png");
+        BufferedImage   icon                                        ;
+        Font            font    = null                              ;
+        ImageLoader     il      = new ImageLoader(              )   ;
+        try
+        {
+            icon = il.loadImage         ("/sprites/icon.png"    )   ;
+        } catch                         (IOException e          )
+        {
+            throw new RuntimeException  (e                      )   ;
+        }
+        try
+        {
+            InputStream in = new BufferedInputStream(
+            new FileInputStream ("./recursos/fontes/pixel1.ttf" )
+                                                                )   ;
+            font = Font.createFont      (Font.TRUETYPE_FONT, in )   ;
+        } catch (Exception e)
+        {
+            e.printStackTrace()                                     ;
         }
 
-        //carega a fonte
-        try{
-            InputStream in = new BufferedInputStream(new FileInputStream("./recursos/fontes/pixel1.ttf"));
-            font = Font.createFont(Font.TRUETYPE_FONT, in);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loading.setVisible  ( true                              )   ;
 
-        //deixa a tela de carregamento visivel
-        loading.setVisible(true);
-
-        //desenho na tela
-        for(int x = 0;x<50;x++){
-
-            // pega ou cria um Buffer para os graficos
-            BufferStrategy buff = loading.getBufferStrategy();
-            if(buff == null){
-                loading.createBufferStrategy();
-                buff = loading.getBufferStrategy();
+        for(int x = 0; x < 50; x++)
+        {
+            BufferStrategy  buff    = loading.getBufferStrategy()   ;
+            if(buff == null)
+            {
+                            loading       .createBufferStrategy()   ;
+                buff    =   loading          .getBufferStrategy()   ;
             }
 
-            // variavel grafica
-            Graphics g = buff.getDrawGraphics();
-            g.create();
+            Graphics        g       = buff     .getDrawGraphics()   ;
 
-            // desenho da tela
-            g.setColor(Color.WHITE);
-            g.fillRect(0,0,408,450);
-
-            // imagem
-            g.drawImage(icon, 0,-15,408,408,null);
-
-            assert font != null;
-
-            // Carregando... texto
-            g.setColor(Color.BLACK);
-            g.setFont(font.deriveFont(Font.PLAIN, 45));
-            g.drawString("Carregando...",5,420);
-
-            // mostra os graficos na tela
-            g.dispose();
-            buff.show();
+            g   .create     (                                   )   ;
+            g   .setColor   ( Color.WHITE                       )   ;
+            g   .fillRect   ( 0,     0,  408,    450            )   ;
+            g   .drawImage  ( icon,  0,  -15,    408, 408, null )   ;
+            assert font     != null                                 ;
+            g   .setColor   ( Color .BLACK                      )   ;
+            g   .setFont    ( font  .deriveFont(Font.PLAIN, 45) )   ;
+            g   .drawString ( "Carregando...", 5, 420           )   ;
+            g   .dispose    (                                   )   ;
+            buff.show       (                                   )   ;
         }
 
-        // cria a nova variavel game
-        Game game = new Game();
-        // inicia o game
-        game.start();
+        Game    game        = new Game(                         )   ;
+        game    .start      (                                   )   ;
     }
 
-    // metodo para finalizar a tela de carregamento
-    public static void carregando(){
-        loading.fechar();
+    public  static void carregando(                             )
+    {
+        loading .fechar     (                                   )   ;
     }
 }
 
@@ -93,9 +79,9 @@ public class Launch {
 import org.json.simple.JSONObject;
 
 FileWriter writeFile = null;
-JSONObject onjetoJson = new JSONObject;
+JSONObject objetoJson = new JSONObject;
 
-    onjetoJson.put("chave", "valor");
+    objetoJson.put("chave", "valor");
 
     try{
         writeFile = new FileWriter("path"+"arquivo.json")

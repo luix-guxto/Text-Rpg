@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Text RPG:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Text_RPG_jar</output-path>
+    <root id="archive" name="Text RPG.jar">
+      <element id="module-output" name="Text RPG" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/json-simple-1.1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
