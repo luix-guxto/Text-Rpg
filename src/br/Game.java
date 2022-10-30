@@ -1,9 +1,9 @@
 package br                                                                      ;
 
-import  br   .display.Display                                                   ;
-import  br   .states .StateManager                                              ;
-import  java .awt    .*                                                         ;
-import  java .awt    .image.BufferStrategy                                      ;
+import br.display.Display                                                       ;
+import br.states.StateManager                                                   ;
+import java.awt.*                                                               ;
+import java.awt.image.BufferStrategy                                            ;
 
 public class Game implements Runnable
 {
