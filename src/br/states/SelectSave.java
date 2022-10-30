@@ -1,12 +1,10 @@
 package br.states;
 
 import br.Game;
-import br.moves.Atacks;
-import br.moves.Magicas;
+import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
 import br.player.Jogador;
 import br.saves.LoadGame;
-import br.saves.SaveGame;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;
 
@@ -15,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
+@SuppressWarnings("unused")
 public class SelectSave implements State{
 
         BufferedImage menu, classes;
@@ -59,7 +58,7 @@ public class SelectSave implements State{
             for (int i = 0; i < classe.length; i++) {
                 classe[i] = new SpriteSheet(classes).getSprite((i * 32) + 1, 0, 30, 32);
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
 
@@ -165,7 +164,9 @@ public class SelectSave implements State{
             switch (choice) {
                 case 0:
                     if (haveSave[0]) {
+                        Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
+                        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -173,7 +174,9 @@ public class SelectSave implements State{
                     break;
                 case 1:
                     if (haveSave[1]) {
+                        Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
+                        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -181,7 +184,9 @@ public class SelectSave implements State{
                     break;
                 case 2:
                     if (haveSave[2]) {
+                        Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
+                        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -189,5 +194,10 @@ public class SelectSave implements State{
                     break;
             }
         }
+    }
+
+    @Override
+    public void initFonte() {
+
     }
 }

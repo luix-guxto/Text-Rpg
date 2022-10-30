@@ -2,15 +2,25 @@ package br.moves;
 
 
 public class Atacks {
-    private int pontosDeUsoMax;
+    private final int pontosDeUsoMax;
     private int pontosDeUso;
-    private String nomeAtaque;
-    private int dano;
+    private final String nomeAtaque;
+    private final int dano;
 
     public Atacks(int pontosDeUsoMax, String nomeAtaque, int dano){
         this.pontosDeUso = this.pontosDeUsoMax = pontosDeUsoMax;
         this.nomeAtaque = nomeAtaque;
         this.dano=dano;
+    }
+
+    @Override
+    public String toString() {
+        return "Atacks{" +
+                "pontosDeUsoMax=" + pontosDeUsoMax +
+                ", pontosDeUso=" + pontosDeUso +
+                ", nomeAtaque='" + nomeAtaque + '\'' +
+                ", dano=" + dano +
+                '}';
     }
 
     public int getPontosDeUsoMax() {
@@ -39,8 +49,11 @@ public class Atacks {
     }
 
     public String getNomeAtaque() {
-        if(pontosDeUso>0) return nomeAtaque;
-        else return "Ataque sem pontos de Uso.";
+        return nomeAtaque;
+    }
+
+    public int getDano() {
+        return dano;
     }
 
 }

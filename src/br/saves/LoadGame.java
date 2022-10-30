@@ -1,33 +1,27 @@
 package br.saves;
 
-import br.Game;
 import br.moves.Atacks;
 import br.moves.Magicas;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
-import java.io.IOException;
-
 public class LoadGame {
 
     private static JSONObject obj;
-    private static JSONParser parser;
 
     private static void load(int numSave){
-        parser = new JSONParser();
+        JSONParser parser = new JSONParser();
         try {
             obj = (JSONObject) parser.parse(new FileReader("./saves/"+numSave+".json"));
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
     }
 
     public static String getNome(int numSave){
         load(numSave);
-        String nome = obj.get("nome").toString();
-        return nome;
+        return obj.get("nome").toString();
     }
 
     public static int getClasse(int i) {
@@ -49,7 +43,7 @@ public class LoadGame {
             ataque[i] = (JSONObject) ataques.get(""+i);
             atacks[i] = new Atacks(Integer.parseInt(ataque[i]
                                     .get("maxPontos").toString()),
-                                    ataque[i].get("nome").toString(),1);//alterar
+                                    ataque[i].get("nome").toString(),Integer.parseInt(ataque[i].get("dano").toString()));
             atacks[i].setPontosDeUso(Integer.parseInt(ataque[i]
                                     .get("pontos").toString()));
         }
@@ -63,11 +57,11 @@ public class LoadGame {
         Magicas[] magicks = new Magicas[magicas.size()];
         for(int i = 0; i< magicas.size();i++){
             magica[i] = (JSONObject) magicas.get(""+i);
-            magicks[i] = new Magicas(Integer.parseInt(magica[i]
-                    .get("maxPontos").toString()),
-                    magica[i].get("nome").toString());
-            magicks[i].setPontosDeUso(Integer.parseInt(magica[i]
-                    .get("pontos").toString()));
+            magicks[i] = new Magicas(Integer.parseInt(magica[i].get("maxPontos").toString()),
+                                    magica[i].get("nome").toString(),
+                                    Integer.parseInt(magica[i].get("tipo").toString()),
+                                    Integer.parseInt(magica[i].get("dano").toString()));
+                                    magicks[i].setPontosDeUso(Integer.parseInt(magica[i].get("pontos").toString()));
         }
         return magicks;
     }

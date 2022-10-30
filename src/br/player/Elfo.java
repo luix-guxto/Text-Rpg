@@ -6,16 +6,35 @@ import br.moves.Magicas;
 import br.saves.LoadGame;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;
-
-import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Elfo implements Player{
     String nome;
-    Atacks[] atacks;
-    Magicas[] magicas;
+    Atacks[] atacks = new Atacks[4];
+    Magicas[] magicas = new Magicas[4];
     BufferedImage image;
     BufferedImage[] sprites;
+
+    @Override
+    public String toString() {
+        return "Elfo{" +
+                "nome='" + nome + '\'' +
+                ", atacks=" + Arrays.toString(atacks) +
+                ", magicas=" + Arrays.toString(magicas) +
+                ", image=" + image +
+                ", sprites=" + Arrays.toString(sprites) +
+                ", danoBase=" + danoBase +
+                ", danoArma=" + danoArma +
+                ", lvlArma=" + lvlArma +
+                ", toLvlUpArma=" + toLvlUpArma +
+                ", life=" + life +
+                ", maxLife=" + maxLife +
+                '}';
+    }
+
+    private int danoBase, danoArma, lvlArma, toLvlUpArma;
 
     int life, maxLife;
 
@@ -70,13 +89,26 @@ public class Elfo implements Player{
     }
 
     @Override
-    public int useAtack(String nomeAtaque) {
-        return 0;
+    public void armaLvlUp() {
+        lvlArma++;
+        toLvlUpArma=5+lvlArma*3;
+        danoArma+= new Random().nextInt(5);
     }
 
     @Override
-    public int useMagicas(String nomeMagica) {
-        return 0;
+    public int useMagDan(int choice) {
+        return magicas[choice].useMagica()+danoArma+danoBase;
+    }
+
+    @Override
+    public int useAtack(int choice) {
+
+        return atacks[choice].useAtack()+danoArma+danoBase;
+    }
+
+    @Override
+    public int useMagicas(int choice) {
+        return magicas[choice].useMagica()+danoBase;
     }
 
     @Override
@@ -96,7 +128,7 @@ public class Elfo implements Player{
 
     @Override
     public int getLevel() {
-        return 0;
+        return LoadGame.getNv(Game.numSave);
     }
 
     @Override
@@ -106,7 +138,7 @@ public class Elfo implements Player{
 
     @Override
     public String getNome() {
-        return null;
+        return LoadGame.getNome(Game.numSave);
     }
 
     @Override
@@ -120,6 +152,11 @@ public class Elfo implements Player{
     }
 
     @Override
+    public Magicas getMagia(int magia) {
+        return magicas[magia];
+    }
+
+    @Override
     public BufferedImage[] getSprites() {
         return sprites;
     }
@@ -129,18 +166,34 @@ public class Elfo implements Player{
         return sprites[0];
     }
 
+
+
     @Override
     public void init(boolean create) {
         if(create) {
+            danoBase=0;
+            danoArma=0;
+            lvlArma=0;
+            toLvlUpArma=5;
             life=maxLife=100;
-            atacks = new Atacks[2];
             atacks[0] = new Atacks(25, "Atirar Flecha",10);
             atacks[1] = new Atacks(50, "Bater arco",5);
-            magicas = new Magicas[1];
-            magicas[0] = new Magicas(1, "Catar flechas");
+            magicas[0] = new Magicas(1, "Catar flechas", 2, 20);
         }else{
-            atacks = LoadGame.getAtacks(Game.numSave);
-            magicas = LoadGame.getMagicas(Game.numSave);
+            for (int i = 0; i<4; i++) {
+                try{
+                    atacks[i] = LoadGame.getAtacks(Game.numSave)[i];
+                }catch (Exception e){
+                    atacks[i] = null;
+                }
+            }
+            for (int i = 0; i<4; i++) {
+                try{
+                    magicas[i] = LoadGame.getMagicas(Game.numSave)[i];
+                }catch (Exception e){
+                    magicas[i] = null;
+                }
+            }
             life = LoadGame.getLife(Game.numSave);
             maxLife = LoadGame.getMaxLife(Game.numSave);
         }

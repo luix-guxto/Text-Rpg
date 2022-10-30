@@ -1,7 +1,6 @@
 package br.states;
 
 import br.Game;
-import br.input.KeyManager;
 import br.pixelfonte.Fontes;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;
@@ -9,11 +8,9 @@ import br.sprites.SpriteSheet;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
+@SuppressWarnings("unused")
 public class Menu1 implements State{
     boolean iniciando,alt = true;
     int cor;
@@ -39,21 +36,9 @@ public class Menu1 implements State{
         a=60;
         b=0;
         c=-40;
-        if(y<=200){
-            cresy=true;
-        }else if(y==255){
-            cresy=false;
-        }
-        if(a<=60){
-            cresa=true;
-        }else if(a>=76){
-            cresa=false;
-        }
-        if(c<=-56){
-            cresc=true;
-        }else if(c>=-46){
-            cresc=false;
-        }
+        cresy=true;
+        cresa=true;
+        cresc=false;
         ImageLoader im = new ImageLoader();
         try{
             img = new SpriteSheet(im.loadImage("/sprites/menu1.png"));
@@ -193,5 +178,10 @@ public class Menu1 implements State{
                     break;
             }
         }
+    }
+
+    @Override
+    public void initFonte() {
+
     }
 }

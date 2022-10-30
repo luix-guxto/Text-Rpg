@@ -9,15 +9,25 @@ import br.saves.LoadGame;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+@SuppressWarnings("unused")
 public class PreBatalha implements State{
 
     Font fonte, fonte1;
+
     @Override
-    public void init() {
-        Fundo.newFundo();
-        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
+    public void initFonte(){
         fonte = Fontes.PIXEL.deriveFont(Font.PLAIN, 25);
         fonte1 = Fontes.PIXEL.deriveFont(Font.BOLD, 28);
+        Fundo.newFundo();
+    }
+
+    @Override
+    public void init() {
+        fonte = Fontes.PIXEL.deriveFont(Font.PLAIN, 25);
+        fonte1 = Fontes.PIXEL.deriveFont(Font.BOLD, 28);
+        Fundo.newFundo();
+        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
+
     }
 
     @Override

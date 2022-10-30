@@ -3,13 +3,14 @@ package br.states;
 import br.Game;
 import br.background.Fundo;
 import br.batalhas.Batalhas;
-import br.player.Jogador;
 
 import java.awt.*;
 
+@SuppressWarnings("unused")
 public class Batalha implements State{
     @Override
     public void init() {
+        Batalhas.init();
     }
 
     @Override
@@ -30,7 +31,13 @@ public class Batalha implements State{
 
     @Override
     public void KeyReleased(int cod) {
-        //Fundo.newFundo();
-        StateManager.setState(StateManager.PREBATALHA);
+
+        Batalhas.teclas(cod);
+
+    }
+
+    @Override
+    public void initFonte() {
+
     }
 }

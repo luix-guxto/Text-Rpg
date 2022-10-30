@@ -42,7 +42,7 @@ public class StateManager implements KeyListener {
         states[PAUSE]=new Pause();
         states[POSBATALHA]=new PosBatalha();
         states[GAME_OVER]=new GameOver();
-        states[PREBATALHA].init();
+        states[PREBATALHA].initFonte();
     }
 
     public static void setState(int state) {

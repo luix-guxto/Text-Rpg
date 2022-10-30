@@ -1,13 +1,16 @@
 package br.saves;
-import br.Game;
 import br.moves.Atacks;
 import br.moves.Magicas;
+import br.player.Jogador;
+import br.player.Player;
 import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+@SuppressWarnings("ALL")
 public class SaveGame {
     FileWriter save;
 
@@ -41,20 +44,27 @@ public class SaveGame {
 
         // criar objeto ataque
         for(int i = 0; i<atacks.length;i++){
-            JSONObject a = new JSONObject();
-            a.put("nome", atacks[i].getNomeAtaque());
-            a.put("maxPontos", atacks[i].getPontosDeUsoMax());
-            a.put("pontos", atacks[i].getPontosDeUso());
-            ataques.put(i, a);
+            try {
+                JSONObject a = new JSONObject();
+                a.put("nome", atacks[i].getNomeAtaque());
+                a.put("maxPontos", atacks[i].getPontosDeUsoMax());
+                a.put("pontos", atacks[i].getPontosDeUso());
+                a.put("dano", atacks[i].getDano());
+                ataques.put(i, a);
+            }catch (Exception ignored){}
         }
 
         // criar objeto magicas
         for(int i = 0; i<magicas.length;i++){
-            JSONObject a = new JSONObject();
-            a.put("nome", magicas[i].getNomeMagica());
-            a.put("maxPontos", magicas[i].getPontosDeUsoMax());
-            a.put("pontos", magicas[i].getPontosDeUso());
-            magics.put(i, a);
+            try {
+                JSONObject a = new JSONObject();
+                a.put("nome", magicas[i].getNomeMagica());
+                a.put("maxPontos", magicas[i].getPontosDeUsoMax());
+                a.put("pontos", magicas[i].getPontosDeUso());
+                a.put("tipo", magicas[i].getTipo());
+                a.put("dano", magicas[i].getDano());
+                magics.put(i, a);
+            }catch (Exception ignored){}
         }
 
         // adicionar para o save

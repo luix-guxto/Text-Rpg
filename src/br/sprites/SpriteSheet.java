@@ -4,16 +4,16 @@ import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
 
-	private BufferedImage image;
+	@SuppressWarnings("all")
+	private BufferedImage image; // variavel da imagem usada para o recorte de sprites
 
-	// Coleta uma foto carregada
+	// Coleta uma foto carregada pelo construtor
 	public SpriteSheet(BufferedImage image) {
 		this.image=image;
 	}
 
 	// Retira um sprite da foto
 	public BufferedImage getSprite(int x, int y, int width, int heigth) {
-		BufferedImage sprite = image.getSubimage(x, y, width, heigth);
-		return sprite;
+		return image.getSubimage(x, y, width, heigth);
 	}
 }

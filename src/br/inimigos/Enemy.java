@@ -1,7 +1,5 @@
 package br.inimigos;
 
-import br.moves.Atacks;
-
 import java.awt.image.BufferedImage;
 
 public interface Enemy {
@@ -14,4 +12,6 @@ public interface Enemy {
     void setDamage(int dano);
     int getXp();
     String getNomeAtaque();
+
+    boolean temPontos();
 }

@@ -262,4 +262,9 @@ public class CreatePlayer implements State{
       }
     }
   }
+
+  @Override
+  public void initFonte() {
+
+  }
 }

@@ -5,6 +5,7 @@ import br.Game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+@SuppressWarnings("unused")
 public class Ranking implements State{
     @Override
     public void init() {
@@ -25,7 +26,7 @@ public class Ranking implements State{
 
     @Override
     public void KeyPress(int cod) {
-
+        
     }
 
     @Override
@@ -33,5 +34,10 @@ public class Ranking implements State{
         if(cod == KeyEvent.VK_ESCAPE){
             StateManager.setState(StateManager.MENU1);
         }
+    }
+
+    @Override
+    public void initFonte() {
+
     }
 }

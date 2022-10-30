@@ -6,8 +6,10 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class Fontes {
-    public static Font PIXEL, FERRUM, FANTASY;
+    public static Font PIXEL, FERRUM, FANTASY; // fontes estaticas
 
+    // carrega as fontes para serem usadas
+    @SuppressWarnings("unused") // alerda supracido, mas metodo usado
     public static void fontInit() {
         try {
             InputStream ip = new BufferedInputStream(new FileInputStream("./recursos/fontes/font_final.otf"));
@@ -16,7 +18,7 @@ public class Fontes {
             FERRUM = Font.createFont(Font.TRUETYPE_FONT, pi);
             FANTASY = Font.createFont(Font.TRUETYPE_FONT, ip);
             PIXEL = Font.createFont(Font.TRUETYPE_FONT, pa);
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
     }

@@ -1,12 +1,12 @@
 package br.states;
 
 import br.Game;
-import br.input.KeyManager;
 import br.pixelfonte.Fontes;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -27,28 +27,15 @@ public class Menu implements State{
         a=60;
         b=0;
         c=-40;
-        if(y<=200){
-            cresy=true;
-        }else if(y==255){
-            cresy=false;
-        }
-        if(a<=60){
-            cresa=true;
-        }else if(a>=76){
-            cresa=false;
-        }
-        if(c<=-56){
-            cresc=true;
-        }else if(c>=-46){
-            cresc=false;
-        }
+        cresy=true;
+        cresa=true;
+        cresc=false;
         ImageLoader im = new ImageLoader();
         try{
             img = new SpriteSheet(im.loadImage("/sprites/capa.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         capa = img.getSprite(0,0,563, 746);
         font1 = Fontes.FANTASY.deriveFont(Font.PLAIN, 130);
         font2 = Fontes.FERRUM.deriveFont(Font.BOLD, 50);
@@ -97,9 +84,6 @@ public class Menu implements State{
         }
 
 
-        if(KeyManager.ENTER){
-            enter=false;
-        }
         if(!enter) {
             x++;
         }
@@ -135,6 +119,13 @@ public class Menu implements State{
 
     @Override
     public void KeyReleased(int cod) {
+        if(cod== KeyEvent.VK_ENTER){
+            enter=false;
+        }
+    }
+
+    @Override
+    public void initFonte() {
 
     }
 }

@@ -1,1 +1,1 @@
-{"classe":0,"mana":100,"level":1,"magicas":{"0":{"pontos":1,"maxPontos":1,"nome":"Catar flechas"}},"vida":100,"xp":0,"nome":"y","ataques":{"0":{"pontos":25,"maxPontos":25,"nome":"Atirar Flecha"},"1":{"pontos":50,"maxPontos":50,"nome":"Bater arco"}}}
+{"classe":1,"mana":100,"level":1,"magicas":{"0":{"dano":20,"tipo":1,"pontos":25,"maxPontos":25,"nome":"Bola de magia"},"1":{"dano":5,"tipo":2,"pontos":1,"maxPontos":1,"nome":"Recarregar ataques"}},"vida":100,"xp":0,"nome":"A","ataques":{"0":{"dano":5,"pontos":40,"maxPontos":40,"nome":"Bater com Cajado"}}}

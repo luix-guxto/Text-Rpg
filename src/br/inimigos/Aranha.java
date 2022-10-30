@@ -15,6 +15,7 @@ public class Aranha implements Enemy{
     String ataqueNome;
     BufferedImage[] sprites = new BufferedImage[3];
     BufferedImage img;
+    int atac = 0, pontos;
 
 
     public Aranha(int nv){
@@ -42,7 +43,6 @@ public class Aranha implements Enemy{
         ataques[4]=new Atacks(  1 ,     "Embrulho venenoso" , 8 + ( this.nv * 4));
     }
 
-
     @Override
     public String getNome() {
         return "Aranha";
@@ -55,9 +55,10 @@ public class Aranha implements Enemy{
 
     @Override
     public int atack() {
-        int a = new Random().nextInt(ataques.length);
-        ataqueNome = ataques[a].getNomeAtaque();
-        return ataques[a].useAtack();
+        atac = new Random().nextInt(ataques.length);
+        ataqueNome = ataques[atac].getNomeAtaque();
+        pontos = ataques[atac].getPontosDeUso();
+        return ataques[atac].useAtack();
     }
 
     @Override
@@ -86,5 +87,12 @@ public class Aranha implements Enemy{
     @Override
     public String getNomeAtaque() {
         return ataqueNome;
+    }
+
+    @Override
+    public boolean temPontos() {
+
+        return pontos>0;
+
     }
 }

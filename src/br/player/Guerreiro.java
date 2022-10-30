@@ -4,8 +4,6 @@ import br.Game;
 import br.moves.Atacks;
 import br.moves.Magicas;
 import br.saves.LoadGame;
-
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Guerreiro implements Player{
@@ -49,12 +47,22 @@ public class Guerreiro implements Player{
     }
 
     @Override
-    public int useAtack(String nomeAtaque) {
+    public void armaLvlUp() {
+
+    }
+
+    @Override
+    public int useMagDan(int choice) {
         return 0;
     }
 
     @Override
-    public int useMagicas(String nomeMagica) {
+    public int useAtack(int choice) {
+        return 0;
+    }
+
+    @Override
+    public int useMagicas(int choice) {
         return 0;
     }
 
@@ -99,6 +107,11 @@ public class Guerreiro implements Player{
     }
 
     @Override
+    public Magicas getMagia(int magia) {
+        return magicas[magia];
+    }
+
+    @Override
     public BufferedImage[] getSprites() {
         return new BufferedImage[0];
     }
@@ -115,7 +128,7 @@ public class Guerreiro implements Player{
             atacks[0] = new Atacks(20, "Corte Lateral",20);
             atacks[1] = new Atacks(40, "Bater com cabo",5);
             magicas = new Magicas[1];
-            magicas[0] = new Magicas(1, "Afiar lamina");
+            magicas[0] = new Magicas(2, "Afiar lamina", 2, 5);
         }else{
             atacks = LoadGame.getAtacks(Game.numSave);
             magicas = LoadGame.getMagicas(Game.numSave);

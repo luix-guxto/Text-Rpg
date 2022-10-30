@@ -1,16 +1,14 @@
 package br.inimigos;
 
+import br.pixelfonte.Fontes;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Random;
 
 public class Inimigo {
 
-    public static boolean dano = false, cres = false;
+    public static boolean dano = false, cres = false, fist = false;
     private static int z = 0, y = 2;
     private static final int numEnimies = 1;
     private static final int escala = 4;
@@ -18,17 +16,11 @@ public class Inimigo {
     private static final int locY = 200;
 
     private static Enemy inimigo;
-    private static Font font;
+    private static int xx, yy, llargura, aaltura;
 
     public static void newInimigo(int lvlPlayer) {
 
-
-        try {
-            InputStream ip = new BufferedInputStream(new FileInputStream("./recursos/fontes/pixel1.ttf"));
-            font = Font.createFont(Font.TRUETYPE_FONT, ip);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        fist = true;
 
         // Reiniciar variaveis
         dano = false;
@@ -37,19 +29,19 @@ public class Inimigo {
         cres=false;
 
         // Iniciar inimigo
-
-        switch (new Random().nextInt(numEnimies)){
-            case 0:
-                inimigo = new Aranha(lvlPlayer);
-                break;
-            default:
-                inimigo = new Aranha(lvlPlayer);
-                break;
-        }
+        inimigo = new Aranha(lvlPlayer);
 
     }
 
     public static void render(Graphics g){
+        g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 20));
+        if(fist){
+            fist = false;
+            xx = locX+((-g.getFontMetrics().stringWidth(inimigo.getNome())+(inimigo.getSprite()[y].getWidth()*escala))/2)-4;
+            yy = locY-54;
+            llargura = g.getFontMetrics().stringWidth(inimigo.getNome())+5;
+            aaltura = g.getFontMetrics(Fontes.PIXEL.deriveFont(Font.PLAIN, 20)).getHeight()+5;
+        }
         if(dano){
             z++;
             if(z==3){
@@ -72,15 +64,19 @@ public class Inimigo {
             z=0;
             y=2;
         }
+
         g.setColor(Color.BLACK);
+        g.fillRect(xx,yy, llargura,aaltura);
+        g.setColor(Color.WHITE);
+        g.drawString(inimigo.getNome(), locX+((-g.getFontMetrics().stringWidth(inimigo.getNome())+(inimigo.getSprite()[y].getWidth()*escala))/2),locY-35);
+        g.setColor(Color.BLACK);
+
         g.fillRect(locX, locY - 30, inimigo.getSprite()[y].getWidth()*escala,20);
         g.setColor(Color.WHITE);
         g.fillRect(locX+5, locY - 25, inimigo.getSprite()[y].getWidth()*escala-10,10);
         g.setColor(Color.GREEN);
 
         int lif = ((inimigo.getSprite()[y].getWidth() * escala - 10)* inimigo.getLife())/ inimigo.getMaxLife();
-
-
 
         g.fillRect(locX+5, locY - 25, lif,10);
         g.drawImage(inimigo.getSprite()[y], locX,locY,inimigo.getSprite()[y].getWidth()*escala,inimigo.getSprite()[y].getHeight()*escala,null);
@@ -96,8 +92,7 @@ public class Inimigo {
         return inimigo.getSprite()[sprite];
     }
     public static int ataque(){
-        int dano=0;
-        return dano;
+        return inimigo.atack();
     }
 
     public static void damage(int dan){
@@ -105,4 +100,19 @@ public class Inimigo {
         dano = true;
     }
 
+    public static boolean temUso(){
+        return inimigo.temPontos();
+    }
+
+    public static String getNomeAtaque() {
+        return inimigo.getNomeAtaque();
+    }
+
+    public static int getVida() {
+        return inimigo.getLife();
+    }
+
+    public static int getXp() {
+        return inimigo.getXp();
+    }
 }

@@ -2,6 +2,7 @@ package br.states;
 
 import java.awt.*;
 
+@SuppressWarnings("unused")
 public class PosBatalha implements State{
     @Override
     public void init() {
@@ -25,6 +26,11 @@ public class PosBatalha implements State{
 
     @Override
     public void KeyReleased(int cod) {
+
+    }
+
+    @Override
+    public void initFonte() {
 
     }
 }

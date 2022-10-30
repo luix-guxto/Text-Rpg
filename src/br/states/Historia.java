@@ -1,18 +1,16 @@
 package br.states;
 
 import br.Game;
+import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
+import br.saves.LoadGame;
 import br.sprites.ImageLoader;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
+@SuppressWarnings("unused")
 public class Historia implements State{
 
     Icon test;
@@ -20,6 +18,7 @@ public class Historia implements State{
     String[] text = {"HISTORIA","","Um antigo dragao despertou.","E seu dever, como heroi,","eh deter esse terrivel dragao,","ta ferrado kkk."};
     @Override
     public void init() {
+        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
         try {
             font = Fontes.PIXEL.deriveFont(Font.PLAIN, 25);
 
@@ -71,5 +70,10 @@ public class Historia implements State{
         if(cod == KeyEvent.VK_ENTER){
             StateManager.setState(StateManager.PREBATALHA);
         }
+    }
+
+    @Override
+    public void initFonte() {
+
     }
 }

@@ -7,10 +7,8 @@ import br.sprites.ImageLoader;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
+@SuppressWarnings("unused")
 public class Credits implements State{
     // 700 433
 
@@ -92,7 +90,7 @@ public class Credits implements State{
                 g.setColor(Color.BLACK);
                 try{
                     g.drawString(text[i], 20, 400+g.getFontMetrics(fontess).getHeight()*i);
-                }catch (Exception e){
+                }catch (Exception ignored){
                 }
             }
         }
@@ -108,5 +106,10 @@ public class Credits implements State{
         if(cod == KeyEvent.VK_ESCAPE){
             StateManager.setState(StateManager.MENU1);
         }
+    }
+
+    @Override
+    public void initFonte() {
+
     }
 }
