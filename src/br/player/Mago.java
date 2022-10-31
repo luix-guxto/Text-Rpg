@@ -12,6 +12,7 @@ public class Mago implements Player{
     String nome;
     Atacks[] atacks;
     Magicas[] magicas;
+    private int lvlArma;
 
     public Mago(String nome) {
 
@@ -57,9 +58,12 @@ public class Mago implements Player{
     public void setNewMagicas(String nomeMagica, int pontosDeUso) {
 
     }
-
     @Override
-    public void armaLvlUp() {
+    public int getLvlArma() {
+        return lvlArma;
+    }
+    @Override
+    public void armaLvlUp(boolean up) {
 
     }
 
@@ -146,6 +150,16 @@ public class Mago implements Player{
             atacks = LoadGame.getAtacks(Game.numSave);
             magicas = LoadGame.getMagicas(Game.numSave);
         }
+    }
+
+    @Override
+    public void recPontoMagica(int rec, int choicc) {
+
+    }
+
+    @Override
+    public void recPontoAtaque(int rec, int choicc) {
+
     }
 
 }

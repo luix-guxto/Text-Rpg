@@ -10,6 +10,8 @@ public class Guerreiro implements Player{
     String nome;
     Atacks[] atacks;
     Magicas[] magicas;
+    private int lvlArma;
+
     public Guerreiro(String nome) {
 
         this.nome=nome;
@@ -47,10 +49,14 @@ public class Guerreiro implements Player{
     }
 
     @Override
-    public void armaLvlUp() {
+    public void armaLvlUp(boolean up) {
 
     }
 
+    @Override
+    public int getLvlArma() {
+        return lvlArma;
+    }
     @Override
     public int useMagDan(int choice) {
         return 0;
@@ -133,6 +139,16 @@ public class Guerreiro implements Player{
             atacks = LoadGame.getAtacks(Game.numSave);
             magicas = LoadGame.getMagicas(Game.numSave);
         }
+    }
+
+    @Override
+    public void recPontoMagica(int rec, int choicc) {
+
+    }
+
+    @Override
+    public void recPontoAtaque(int rec, int choicc) {
+
     }
 
 }

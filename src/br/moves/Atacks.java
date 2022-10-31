@@ -38,14 +38,14 @@ public class Atacks {
         }else{return 0;}
     }
     public void setPontosDeUso(int pontos){
-        this.pontosDeUso = pontos;
+        this.pontosDeUso+=pontos;
+        if(this.pontosDeUso>pontosDeUsoMax){
+            this.pontosDeUso=pontosDeUsoMax;
+        }
     }
 
     public void lvlUp() {
         this.pontosDeUso=pontosDeUsoMax;
-    }
-    public void recPontos(int pontos) {
-        this.pontosDeUso+=pontos;
     }
 
     public String getNomeAtaque() {

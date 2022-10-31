@@ -1,6 +1,7 @@
 package br.player;
 
 import br.Game;
+import br.mochila.Bag;
 import br.moves.Atacks;
 import br.moves.Magicas;
 import br.pixelfonte.Fontes;
@@ -52,8 +53,10 @@ public class Jogador {
             SaveGame saveGame = new SaveGame();
             Atacks[] atacks = player.getAtacks();
             Magicas[] magicas = player.getMagicas();
-            saveGame.salvarJogo(Game.CLASSE, CreatePlayer.nome, 100, 100, 0, 1, atacks, magicas, Game.numSave);
+            Bag.initBag(true);
+            saveGame.salvarJogo(Game.CLASSE, CreatePlayer.nome, 100, 100, 0, 1, atacks, magicas, Game.numSave, Bag.mochila);
         }else{
+
             switch (ccc) {
                 case 0:
                     player = new Elfo(LoadGame.getNome(Game.numSave));
@@ -66,6 +69,7 @@ public class Jogador {
                     break;
             }
             player.init(false);
+            Bag.initBag(false);
         }
 
     }
@@ -245,5 +249,22 @@ public class Jogador {
 
     public static String getNome() {
         return player.getNome();
+    }
+
+    public static void recPonto(boolean atac, int rec, int choicc) {
+        if(atac){
+            player.recPontoAtaque(rec,choicc);
+        }else {
+            player.recPontoMagica(rec,choicc);
+        }
+    }
+
+
+    public static void upArma(boolean upArma) {
+        player.armaLvlUp(upArma);
+    }
+
+    public static int getLvlArma() {
+        return player.getLvlArma();
     }
 }

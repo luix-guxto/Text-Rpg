@@ -47,18 +47,16 @@ public class Magicas {
     public void lvlUp() {
         this.pontosDeUso=pontosDeUsoMax;
     }
-    public void recPontos(int pontos) {
-        this.pontosDeUso+=pontos;
-        if(this.pontosDeUso>pontosDeUsoMax){
-            this.pontosDeUso=pontosDeUsoMax;
-        }
-    }
+
 
     public String getNomeMagica() {
         return nomeMagica;
     }
 
     public void setPontosDeUso(int pontos) {
-        this.pontosDeUso=pontos;
+        this.pontosDeUso+=pontos;
+        if(this.pontosDeUso>pontosDeUsoMax){
+            this.pontosDeUso=pontosDeUsoMax;
+        }
     }
 }

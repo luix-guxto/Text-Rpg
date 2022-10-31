@@ -15,7 +15,7 @@ public interface Player {
     void setVida(int vida); // aumentar ou diminuir vida
     void setNewAtack(String nomeAtaque, int pontosDeUso); // atribuir novo ataque em level up
     void setNewMagicas(String nomeMagica, int pontosDeUso); // atribuir nova magica em level up
-    void armaLvlUp(); // lvl up arma
+    void armaLvlUp(boolean up); // lvl up arma
 
 
     int useMagDan(int choice);
@@ -37,4 +37,10 @@ public interface Player {
     BufferedImage[] getSprites();
     BufferedImage getSprite();
     void init(boolean create);
+
+    void recPontoMagica(int rec, int choicc);
+
+    void recPontoAtaque(int rec, int choicc);
+
+    int getLvlArma();
 }
