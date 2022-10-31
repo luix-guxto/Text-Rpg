@@ -1,5 +1,6 @@
 package br.saves;
 
+import br.mochila.Mochila;
 import br.moves.Atacks;
 import br.moves.Magicas;
 import org.json.simple.JSONObject;
@@ -76,4 +77,18 @@ public class LoadGame {
         int a = Integer.parseInt(obj.get("level").toString());
         return 100+((a-1)*9);
     }
+
+    public static Mochila getMochila(int numSave) {
+        load(numSave);
+        JSONObject mochila = (JSONObject) obj.get("mochila");
+        return new Mochila(
+                Integer.parseInt(mochila.get("ervas").toString()),
+                Integer.parseInt(mochila.get("flores").toString()),
+                Integer.parseInt(mochila.get("minerios").toString()),
+                Integer.parseInt(mochila.get("couro").toString()),
+                Integer.parseInt(mochila.get("pocoesVida").toString()),
+                Integer.parseInt(mochila.get("pocoesPP").toString()),
+                Integer.parseInt(mochila.get("lvlMochila").toString()));
+    }
+
 }

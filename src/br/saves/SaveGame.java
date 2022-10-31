@@ -1,8 +1,7 @@
 package br.saves;
+import br.mochila.Mochila;
 import br.moves.Atacks;
 import br.moves.Magicas;
-import br.player.Jogador;
-import br.player.Player;
 import org.json.simple.JSONObject;
 
 import java.io.File;
@@ -35,12 +34,13 @@ public class SaveGame {
     }
 
     // cria o objeto para salvar e inicia o save
-    public void salvarJogo(int classe,String nome, int vida, int mana, int xp, int level, Atacks[] atacks, Magicas[] magicas, int numSave){
+    public void salvarJogo(int classe, String nome, int vida, int mana, int xp, int level, Atacks[] atacks, Magicas[] magicas, int numSave, Mochila mochilas){
 
         // objetos json
         JSONObject obj = new JSONObject();
         JSONObject ataques = new JSONObject();
         JSONObject magics = new JSONObject();
+        JSONObject mochila = new JSONObject();
 
         // criar objeto ataque
         for(int i = 0; i<atacks.length;i++){
@@ -67,6 +67,14 @@ public class SaveGame {
             }catch (Exception ignored){}
         }
 
+        mochila.put("lvlMochila", mochilas.getLvlMochila());
+        mochila.put("pocoesPP", mochilas.getPocoesPP());
+        mochila.put("pocoesVida", mochilas.getPocoesVida());
+        mochila.put("couro", mochilas.getCouro());
+        mochila.put("minerios", mochilas.getMinerios());
+        mochila.put("flores", mochilas.getFlores());
+        mochila.put("ervas", mochilas.getErvas());
+
         // adicionar para o save
         obj.put("classe", classe);
         obj.put("nome", nome);
@@ -76,7 +84,7 @@ public class SaveGame {
         obj.put("level", level);
         obj.put("ataques", ataques);
         obj.put("magicas", magics);
-
+        obj.put("mochila", mochila);
 
         save(obj, numSave);
     }

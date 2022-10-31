@@ -89,10 +89,12 @@ public class Elfo implements Player{
     }
 
     @Override
-    public void armaLvlUp() {
-        lvlArma++;
-        toLvlUpArma=5+lvlArma*3;
-        danoArma+= new Random().nextInt(5);
+    public void armaLvlUp(boolean up) {
+        if(up){
+            lvlArma++;
+            toLvlUpArma = 5 + lvlArma * 3;
+            danoArma += new Random().nextInt(5);
+        }
     }
 
     @Override
@@ -197,5 +199,20 @@ public class Elfo implements Player{
             life = LoadGame.getLife(Game.numSave);
             maxLife = LoadGame.getMaxLife(Game.numSave);
         }
+    }
+
+    @Override
+    public void recPontoMagica(int rec, int choicc) {
+        magicas[choicc].setPontosDeUso(rec);
+    }
+
+    @Override
+    public void recPontoAtaque(int rec, int choicc) {
+        atacks[choicc].setPontosDeUso(rec);
+    }
+
+    @Override
+    public int getLvlArma() {
+        return lvlArma;
     }
 }
