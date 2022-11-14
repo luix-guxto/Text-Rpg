@@ -1,4 +1,5 @@
-# TEXT_RPG
+<h1 align="center">TEXT_RPG</h1>
+<br>
 <div align="center">
     <img src="https://github.com/luix-guxto/Text-Rpg/blob/main/recursos/sprites/icon.png?raw=true" width="300px"/>
 </div>
@@ -117,3 +118,8 @@ As contribuições são bem-vindas, e podem ser feitas de duas formas:
 
 - [Luis Augusto](https://github.com/luix-guxto "Luis Augusto")
 - Artes Graficas de terceiros, todos os creditos aos criadores
+
+## Atalhos
+
+- [Topo da pagina](#)
+- [Menu](#Menu)
