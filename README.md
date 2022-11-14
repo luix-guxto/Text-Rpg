@@ -53,7 +53,6 @@ Nesse topico vou listar os requisitos nescessarios para rodar o jogo, e também 
 Primeiramente precisa instalar o JDK 11 (Java Development Kit) para poder rodar o jogo.
 
 - [Baixe o JDK 11 aqui](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11")
-- [JDK download direto para windows](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11")
 - [Baixe o jogo aqui](https://github.com/luix-guxto/Text-Rpg/blob/main/Download/download.zip?raw=true "Download do jogo")
 
 Após baixar o jogo, precisa extrair o arquivo.zip para uma pasta da sua preferência.
@@ -64,7 +63,7 @@ Caso deseje criar um atalho para o jogo, basta criar um atalho para o arquivo Te
 
 Para editar o codigo, precisa instalar o [JDK 11](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11") (Java Development Kit) para poder editar o codigo.
 
-Além disso, vai precisar de uma IDE JAVA, eu recomendo o [Eclipse](https://www.eclipse.org/downloads/ "Download Eclipse").
+Além disso, vai precisar de uma IDE JAVA, eu recomendo o [IntelliJ Community](https://www.jetbrains.com/pt-br/idea/download/#section=windows "Download IntelliJ Community"), mas pode usar a IDE que preferir.
 
 ### Comandos para editar o codigo
 
