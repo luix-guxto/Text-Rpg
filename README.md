@@ -20,6 +20,13 @@ Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
 
 - [Sobre](#Sobre)
 - [Como jogar](#Como-jogar)
+- [Debug](#Debug-e-edição-do-codigo)
+- [Melhorias](#Lista-de-melhorias-do-jogo)
+- [Contribuição](#Contribuições)
+- [Licença](#Licença)
+- [Contato](#Contato)
+- [Créditos](#Créditos)
+
 
 ## Sobre
 Um jogo RPG, baseado no meu primeiro game de texto para terminal.
