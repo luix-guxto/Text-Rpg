@@ -20,6 +20,7 @@ Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
 ## Menu
 
 - [Sobre](#Sobre)
+- [Requisitos](#Requisitos)
 - [Como jogar](#Como-jogar)
 - [Debug](#Debug-e-edição-do-codigo)
 - [Melhorias](#Lista-de-melhorias-do-jogo)
@@ -33,11 +34,25 @@ Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
 Um jogo RPG, baseado no meu primeiro game de texto para terminal.
 Ele é um jogo 100% feito em java, e visa ser um jogo de texto, com uma história e um sistema de batalha.
 
+## Requisitos
+
+Nesse topico vou listar os requisitos nescessarios para rodar o jogo, e também os requisitos para editar o codigo.
+
+### Para jogar
+- Java 11 ou superior
+- Sistema operacional Windows, Linux ou Mac
+
+### Para editar o código
+- Java 11 ou superior
+- Sistema operacional Windows, Linux ou Mac
+- IDE da sua preferência
+- GIT
+
 ## Como jogar
 
-Primeiramente precisa instalar o JRE 8 (Java Runtime Environment) para poder rodar o jogo.
+Primeiramente precisa instalar o JDK 11 (Java Development Kit) para poder rodar o jogo.
 
-- [Baixe o JRE 8 aqui](https://www.java.com/pt-BR/download/ "Download JRE 8") 
+- [Baixe o JDK 11 aqui](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11") 
 - [Baixe o jogo aqui](https://github.com/luix-guxto/Text-Rpg/blob/main/Download/download.zip?raw=true "Download do jogo")
 
 Após baixar o jogo, precisa extrair o arquivo.zip para uma pasta da sua preferência.
@@ -46,7 +61,7 @@ Caso deseje criar um atalho para o jogo, basta criar um atalho para o arquivo Te
 
 ## Debug e edição do codigo
 
-Para editar o codigo, precisa instalar o [JDK 1.8](https://www.oracle.com/java/technologies/downloads/#java8 "Download JDK 1.8") (Java Development Kit) para poder editar o codigo.
+Para editar o codigo, precisa instalar o [JDK 11](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11") (Java Development Kit) para poder editar o codigo.
 
 Além disso, vai precisar de uma IDE JAVA, eu recomendo o [Eclipse](https://www.eclipse.org/downloads/ "Download Eclipse").
 
