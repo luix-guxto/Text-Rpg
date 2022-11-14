@@ -1,4 +1,16 @@
 # TEXT_RPG
+<img src="https://github.com/luix-guxto/Text-Rpg/blob/main/recursos/sprites/icon.png?raw=true" width="100px" align="center"/>
+
+## Sobre o projeto
+
+Esse é um jogo feito inteiramente em java, onde eu me propus a desafiar-me, em codificar um jogo do 0 feito em java, utilizando todo o meu conhecimento, como Orientação a Objetos, modelo S.O.L.I.D., comunicação com REST API, leitura e salvamento de arquivos, manipulação de dados em .JSON, etc.
+Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
+
+<div onclick="window.location.href = 'https://github.com/luix-guxto'" align="center" title="Pagina Github Luix-Guxto">
+  <img src="https://avatars.githubusercontent.com/u/77067320?s=120&v=4" width="100px" />
+  <br/><span>Luix-Guxto</span>
+</div>
+
 ## Menu
 
 - [Sobre](#Sobre)
