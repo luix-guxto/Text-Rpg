@@ -1,15 +1,19 @@
 # TEXT_RPG
-<img src="https://github.com/luix-guxto/Text-Rpg/blob/main/recursos/sprites/icon.png?raw=true" width="100px" align="center"/>
+<div align="center">
+    <img src="https://github.com/luix-guxto/Text-Rpg/blob/main/recursos/sprites/icon.png?raw=true" width="300px"/>
+</div>
 
 ## Sobre o projeto
 
 Esse é um jogo feito inteiramente em java, onde eu me propus a desafiar-me, em codificar um jogo do 0 feito em java, utilizando todo o meu conhecimento, como Orientação a Objetos, modelo S.O.L.I.D., comunicação com REST API, leitura e salvamento de arquivos, manipulação de dados em .JSON, etc.
 Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
 
-<div align="center" title="Pagina Github Luix-Guxto">
-  <img onclick="alert('Essa é minha imagem do github')" src="https://avatars.githubusercontent.com/u/77067320?s=120&v=4" width="100px" />
-  <br/><a href="https://github.com/luix-guxto">Luix-Guxto</a>
-  <br><a href="https://luix-guxto.github.io/portifolio">Portifolio</a>
+<br> <div align="left" title="Pagina Github Luix-Guxto">
+    <img onclick="alert('Essa é minha imagem do github')" src="https://avatars.githubusercontent.com/u/77067320?s=120&v=4" width="150px" />
+    <br><div>
+        <li><a title="Github" href="https://github.com/luix-guxto">Luix-Guxto</a></li>
+        <li><a title="Portifolio" href="https://luix-guxto.github.io/portifolio">Portifolio</a></li>
+    </div>
 </div>
 
 ## Menu
