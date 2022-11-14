@@ -13,7 +13,7 @@ Ele é um jogo 100% feito em java, e visa ser um jogo de texto, com uma históri
 Primeiramente precisa instalar o JRE 8 (Java Runtime Environment) para poder rodar o jogo.
 
 - [Baixe o JRE 8 aqui](https://www.java.com/pt-BR/download/ "Download JRE 8") 
-- [Baixe o jogo aqui](addlink.com "Download do jogo")
+- [Baixe o jogo aqui](https://github.com/luix-guxto/Text-Rpg/blob/main/Download/download.zip?raw=true "Download do jogo")
 
 Após baixar o jogo, precisa extrair o arquivo.zip para uma pasta da sua preferência.
 Após extrair o arquivo, basta dar um duplo clique no arquivo Text RPG.jar para iniciar o jogo, caso o sistema questione qual aplicativo usar, basta selecionar o Java.
