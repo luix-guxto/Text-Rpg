@@ -19,12 +19,40 @@ public class Game implements Runnable
     private             boolean         running     = false                     ;
 
 
-    public Game()
+    public Game(String[] args)
     {
         ds = new Display        ("Text-RPG", WIDTH, HIGHT, "/sprites/icon.png") ;
         sm = new StateManager   ()                                              ;
         ds   .setKeyListener    (sm)                                            ;
-        StateManager.setState   (StateManager.SELECT_SAVE)                      ;
+
+        //debug
+        if(args.length == 0) {
+            StateManager.setState(StateManager.MENU);
+        }
+        else{
+            String opt = args[0].toLowerCase();
+            switch (opt){
+                case "menu":
+                case "m":
+                    StateManager.setState(StateManager.MENU1);
+                    break;
+                case "r":
+                case "ranking":
+                    StateManager.setState(StateManager.RANKING);
+                    break;
+                case "c":
+                case "credits":
+                    StateManager.setState(StateManager.CREDITS);
+                    break;
+                case "s":
+                case "select":
+                    StateManager.setState(StateManager.SELECT_SAVE);
+                    break;
+                default:
+                    System.out.println("Invalid option, use -h or help to see the options");
+                    System.exit(0);
+            }
+        }
     }
 
     private void render()

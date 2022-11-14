@@ -224,7 +224,7 @@ public class Batalhas {
             }
 
             if(optt == 7){
-                StateManager.setState(StateManager.PREBATALHA);
+                StateManager.setState(StateManager.POSBATALHA);
                 return;
             }
 
