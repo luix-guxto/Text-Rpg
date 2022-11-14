@@ -31,7 +31,7 @@ Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
 
 
 ## Sobre
-Um jogo RPG, baseado no meu primeiro game de texto para terminal.
+Um jogo RPG, baseado no meu primeiro game de texto para terminal, chamado tambem de TextRpg [Você pode conferir por aqui](https://github.com/luix-guxto/textrpg).
 Ele é um jogo 100% feito em java, e visa ser um jogo de texto, com uma história e um sistema de batalha.
 
 ## Requisitos
