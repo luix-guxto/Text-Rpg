@@ -53,7 +53,7 @@ Nesse topico vou listar os requisitos nescessarios para rodar o jogo, e também 
 Primeiramente precisa instalar o JDK 11 (Java Development Kit) para poder rodar o jogo.
 
 - [Baixe o JDK 11 aqui](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11") 
-- [JDK download direto para windows](https://github.com/luix-guxto/Text-Rpg/blob/main/Download/WindowsJDK.exe?raw=true "Download JDK 11")
+- [JDK download direto para windows](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11")
 - [Baixe o jogo aqui](https://github.com/luix-guxto/Text-Rpg/blob/main/Download/download.zip?raw=true "Download do jogo")
 
 Após baixar o jogo, precisa extrair o arquivo.zip para uma pasta da sua preferência.
