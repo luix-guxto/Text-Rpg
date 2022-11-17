@@ -166,7 +166,7 @@ public class SelectSave implements State{
                     if (haveSave[0]) {
                         Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
-                        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
+                        Inimigo.newInimigo(Jogador.getNivel());
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -176,7 +176,7 @@ public class SelectSave implements State{
                     if (haveSave[1]) {
                         Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
-                        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
+                        Inimigo.newInimigo(Jogador.getNivel());
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -186,7 +186,7 @@ public class SelectSave implements State{
                     if (haveSave[2]) {
                         Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
-                        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
+                        Inimigo.newInimigo(Jogador.getNivel());
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);

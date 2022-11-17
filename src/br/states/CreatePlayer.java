@@ -1,6 +1,7 @@
 package br.states;
 
 import br.Game;
+import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
 import br.player.Jogador;
 import br.sprites.ImageLoader;
@@ -243,6 +244,7 @@ public class CreatePlayer implements State{
       if(cod==KeyEvent.VK_ENTER && wait){
         Game.CLASSE=CLASSE;
         Jogador.criarJogador(true);
+        Inimigo.newInimigo(Jogador.getNivel());
         StateManager.setState(StateManager.HISTORIA);
       }
       if(cod==KeyEvent.VK_A ||cod==KeyEvent.VK_LEFT){

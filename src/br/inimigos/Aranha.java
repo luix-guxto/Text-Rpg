@@ -29,7 +29,6 @@ public class Aranha implements Enemy{
         }catch (Exception e){
             e.printStackTrace();
         }
-
         this.nv = new Random().nextInt(nv)+1;
         life = maxLife = 5 +(this.nv * 2);
         ataques = new Atacks[5];
@@ -81,7 +80,7 @@ public class Aranha implements Enemy{
 
     @Override
     public int getXp() {
-        return 20 + (this.nv*10);
+        return 220;
     }
 
     @Override

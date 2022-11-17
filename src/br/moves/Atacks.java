@@ -44,10 +44,6 @@ public class Atacks {
         }
     }
 
-    public void lvlUp() {
-        this.pontosDeUso=pontosDeUsoMax;
-    }
-
     public String getNomeAtaque() {
         return nomeAtaque;
     }

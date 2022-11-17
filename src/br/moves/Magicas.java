@@ -44,11 +44,6 @@ public class Magicas {
         }else{return 0;}
     }
 
-    public void lvlUp() {
-        this.pontosDeUso=pontosDeUsoMax;
-    }
-
-
     public String getNomeMagica() {
         return nomeMagica;
     }

@@ -31,7 +31,7 @@ Caso queira conhecer mais sobre mim, basta acessar o Github a seguir:
 
 
 ## Sobre
-Um jogo RPG, baseado no meu primeiro game de texto para terminal, chamado tambem de TextRpg [Você pode conferir por aqui](https://github.com/luix-guxto/textrpg).
+Um jogo RPG, baseado no meu primeiro game de texto para terminal, chamado tambem de [TextRpg](https://github.com/luix-guxto/textrpg).
 Ele é um jogo 100% feito em java, e visa ser um jogo de texto, com uma história e um sistema de batalha.
 
 ## Requisitos
@@ -59,6 +59,8 @@ Após baixar o jogo, precisa extrair o arquivo.zip para uma pasta da sua prefer�
 Após extrair o arquivo, basta dar um duplo clique no arquivo Text RPG.jar para iniciar o jogo, caso o sistema questione qual aplicativo usar, basta selecionar o Java.
 Caso deseje criar um atalho para o jogo, basta criar um atalho para o arquivo Text RPG.jar.
 
+###[Manual do Jogo](https://github.com/luix-guxto/Text-Rpg/blob/main/Documentacao/ManualGame.md "Manual do jogo")
+
 ## Debug e edição do codigo
 
 Para editar o codigo, precisa instalar o [JDK 11](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html "Download JDK 11") (Java Development Kit) para poder editar o codigo.
@@ -85,27 +87,32 @@ git clone https://github.com/luix-guxto/Text-Rpg.git
 - Na janela que abrir, clique em "Browse" e selecione a classe "Main" dentro da pasta "src".
 - Clique em "Apply", e depois em "Run".
 - O jogo vai ser compilado e executado.
+
+###[Documentação do codigo](https://luix-guxto.github.io/Text-Rpg/Documentacao/Documentacao.md "Documentação do codigo")
+
 ## Lista de melhorias do jogo
 
 O Jogo ainda está em processo de desenvolvimento, e já foi atribuido as seguintes melhorias:
 
 - [x] Sistema de batalha
 - [x] Sistema de inventario
-- [ ] Sistema de loja
 - [x] Historia
-- [ ] Sistema de level
+- [x] Sistema de level
 - [x] Sistema de magias
 - [x] Sistema de ataques
+- [x] Sistema de arma
+- [x] Sistema de desbloqueio de novas Habilidades
+- [x] Sistema de criação de itens
+- [x] Sistema de melhorias
 - [ ] Outras classes (Magos, arqueiros, etc)
 - [ ] Outros inimigos (Dragões, etc)
 - [ ] Game-Over Screen
 - [ ] Ranking Local
 - [ ] Ranking Online
-- [ ] Salvar jogo
+- [x] Salvar jogo
 - [x] Carregar jogo
 - [x] Criar personagens
 - [x] Apagar save Game
-- [ ] Sistema de missões
 
 ## Contribuições
 
@@ -137,4 +144,5 @@ As contribuições são bem-vindas, e podem ser feitas de duas formas:
 ## Atalhos
 
 - [Topo da pagina](#)
+- [Topo do README](#readme)
 - [Menu](#Menu)

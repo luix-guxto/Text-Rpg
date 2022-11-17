@@ -6,30 +6,54 @@ import br.moves.Magicas;
 import br.saves.LoadGame;
 
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 
 public class Mago implements Player{
-    String nome;
     Atacks[] atacks;
     Magicas[] magicas;
     private int lvlArma;
 
-    public Mago(String nome) {
+    public Mago() {
 
-        this.nome=nome;
     }
 
     @Override
-    public String toString() {
-        return "Mago{" +
-                "nome='" + nome + '\'' +
-                ", atacks=" + Arrays.toString(atacks) +
-                ", magicas=" + Arrays.toString(magicas) +
-                '}';
+    public boolean canLvUp() {
+        return getXp()>=getXpToUp();
     }
 
     @Override
-    public void setScore(int pontos) {
+    public String getUnlockedMove() {
+        return null;
+    }
+
+    @Override
+    public int getClasse() {
+        return 1;
+    }
+
+
+    @Override
+    public int getDanoBonus() {
+        return 0;
+    }
+
+    @Override
+    public int getDanoArma() {
+        return 0;
+    }
+
+    @Override
+    public int getDanoBase() {
+        return 0;
+    }
+
+    @Override
+    public boolean getBossIsDead() {
+        return false;
+    }
+
+    @Override
+    public void setBossIsDead() {
 
     }
 
@@ -48,16 +72,6 @@ public class Mago implements Player{
 
     }
 
-
-    @Override
-    public void setNewAtack(String nomeAtaque, int pontosDeUso) {
-
-    }
-
-    @Override
-    public void setNewMagicas(String nomeMagica, int pontosDeUso) {
-
-    }
     @Override
     public int getLvlArma() {
         return lvlArma;
@@ -113,6 +127,11 @@ public class Mago implements Player{
     }
 
     @Override
+    public boolean unlockMove() {
+        return false;
+    }
+
+    @Override
     public Atacks[] getAtacks() {
         return atacks;
     }
@@ -123,12 +142,7 @@ public class Mago implements Player{
     }
 
     @Override
-    public Magicas getMagia(int magia) {
-        return magicas[magia];
-    }
-
-    @Override
-    public BufferedImage[] getSprites() {
+    public BufferedImage[] getSpritesBossLive() {
         return new BufferedImage[0];
     }
 

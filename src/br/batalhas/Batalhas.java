@@ -165,6 +165,7 @@ public class Batalhas {
                         return;
                     case 3:
                         choicc=0;
+                        Jogador.receberDano(Jogador.getVida());
                         optt=8;
                         return;
                 }

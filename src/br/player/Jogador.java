@@ -20,15 +20,26 @@ public class Jogador {
     private static final int escala = 4;
     private static boolean dan = false,cres = true;
     private static Player player;
-
     private static int cchois = 0;
-
     public static Atacks getAtack() {
         return player.getAtacks()[cchois];
     }
-
     public static Magicas getMagica() {
         return player.getMagicas()[cchois];
+    }
+    private static String moveUnlocked;
+    private static int andares;
+
+    public static boolean unlockMoveOnUp(){
+        boolean canUnlocked = player.unlockMove();
+        if (canUnlocked){
+            moveUnlocked = player.getUnlockedMove();
+        }
+        return canUnlocked;
+    }
+
+    public static String getMoveUnlocked() {
+        return moveUnlocked;
     }
 
     public static void criarJogador(boolean create){
@@ -40,32 +51,33 @@ public class Jogador {
         if(create) {
             switch (ccc){
                 case 0:
-                    player = new Elfo(CreatePlayer.nome);
+                    player = new Elfo();
                     break;
                 case 1:
-                    player = new Mago(CreatePlayer.nome);
+                    player = new Mago();
                     break;
                 case 2:
-                    player = new Guerreiro(CreatePlayer.nome);
+                    player = new Guerreiro();
                     break;
             }
             player.init(true);
             SaveGame saveGame = new SaveGame();
             Atacks[] atacks = player.getAtacks();
             Magicas[] magicas = player.getMagicas();
+            andares = 0;
             Bag.initBag(true);
-            saveGame.salvarJogo(Game.CLASSE, CreatePlayer.nome, 100, 100, 0, 1, atacks, magicas, Game.numSave, Bag.mochila);
+            saveGame.salvarJogo(player.getBossIsDead(), player.getDanoArma(), player.getDanoBase(), andares, Game.CLASSE, CreatePlayer.nome, 100, 0, 100, 1, atacks, magicas, Game.numSave, Bag.mochila);
         }else{
-
+            andares = LoadGame.getAndares(Game.numSave);
             switch (ccc) {
                 case 0:
-                    player = new Elfo(LoadGame.getNome(Game.numSave));
+                    player = new Elfo();
                     break;
                 case 1:
-                    player = new Mago(LoadGame.getNome(Game.numSave));
+                    player = new Mago();
                     break;
                 case 2:
-                    player = new Guerreiro(LoadGame.getNome(Game.numSave));
+                    player = new Guerreiro();
                     break;
             }
             player.init(false);
@@ -75,11 +87,11 @@ public class Jogador {
     }
 
     public static void icon(Graphics g, int x, int y, int escala){
-        g.drawImage(player.getSprites()[0],x,y,player.getSprites()[0].getWidth()*escala,player.getSprites()[0].getHeight()*escala,null);
+        g.drawImage(player.getSpritesBossLive()[0],x,y,player.getSpritesBossLive()[0].getWidth()*escala,player.getSpritesBossLive()[0].getHeight()*escala,null);
     }
 
     public static BufferedImage getSprite(){
-        return player.getSprites()[0];
+        return player.getSpritesBossLive()[0];
     }
 
     public static void setMove(int choice){
@@ -125,13 +137,13 @@ public class Jogador {
         int lif = ((viv-10)* player.getLife())/ player.getMaxLife();
 
         g.fillRect(locX+5-(viv/4), locY - 35, lif,10);
-        g.drawImage(player.getSprites()[y], locX,locY,player.getSprites()[y].getWidth()*escala,player.getSprites()[y].getHeight()*escala,null);
+        g.drawImage(player.getSpritesBossLive()[y], locX,locY,player.getSpritesBossLive()[y].getWidth()*escala,player.getSpritesBossLive()[y].getHeight()*escala,null);
 
         g.setColor(Color.BLACK);
-        g.fillRect((locX+(-g.getFontMetrics().stringWidth(player.getNome())+player.getSprites()[y].getWidth()*escala)/2)-4,locY-65,g.getFontMetrics().stringWidth(player.getNome())+5,5+g.getFontMetrics(Fontes.PIXEL.deriveFont(Font.PLAIN, 20)).getHeight());
+        g.fillRect((locX+(-g.getFontMetrics().stringWidth(player.getNome())+player.getSpritesBossLive()[y].getWidth()*escala)/2)-4,locY-65,g.getFontMetrics().stringWidth(player.getNome())+5,5+g.getFontMetrics(Fontes.PIXEL.deriveFont(Font.PLAIN, 20)).getHeight());
         g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 20));
         g.setColor(Color.WHITE);
-        g.drawString(player.getNome(), locX+(-g.getFontMetrics().stringWidth(player.getNome())+player.getSprites()[y].getWidth()*escala)/2,locY-45);
+        g.drawString(player.getNome(), locX+(-g.getFontMetrics().stringWidth(player.getNome())+player.getSpritesBossLive()[y].getWidth()*escala)/2,locY-45);
 
     }
 
@@ -213,10 +225,10 @@ public class Jogador {
     public static int getDano(int choicc, boolean b) {
         if(b){
             if(player.getAtacks()[choicc]==null){return 0;}
-            return player.getAtacks()[choicc].getDano();
+            return player.getAtacks()[choicc].getDano() + player.getDanoBonus();
         }else {
             if(player.getMagicas()[choicc]==null){return 0;}
-                return player.getMagicas()[choicc].getDano();
+                return player.getMagicas()[choicc].getDano() + player.getDanoBonus();
         }
     }
 
@@ -266,5 +278,46 @@ public class Jogador {
 
     public static int getLvlArma() {
         return player.getLvlArma();
+    }
+    public static void addXp(int xp){
+        player.setXp(player.getXp()+xp);
+    }
+    public static boolean checkLvUp(){
+        return player.canLvUp();
+    }
+
+    public static void lvUp(){
+        player.upLevel();
+    }
+
+    public static int getXp() {
+        return player.getXp();
+    }
+
+    public static int getXpToLvUp() {
+        return player.getXpToUp();
+    }
+
+    public static int getClasse() {
+        return player.getClasse();
+    }
+
+    public static int getDanoBase(){
+        return player.getDanoBase();
+    }
+    public static int getDanoArma(){
+        return player.getDanoArma();
+    }
+
+    public static int getAndares() {
+        return andares;
+    }
+
+    public static void addAndares() {
+        andares++;
+    }
+
+    public static boolean getBossIsDead() {
+        return player.getBossIsDead();
     }
 }

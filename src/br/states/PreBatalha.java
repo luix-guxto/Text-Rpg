@@ -4,7 +4,7 @@ import br.Game;
 import br.background.Fundo;
 import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
-import br.saves.LoadGame;
+import br.player.Jogador;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -26,7 +26,7 @@ public class PreBatalha implements State{
         fonte = Fontes.PIXEL.deriveFont(Font.PLAIN, 25);
         fonte1 = Fontes.PIXEL.deriveFont(Font.BOLD, 28);
         Fundo.newFundo();
-        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
+        Inimigo.newInimigo(Jogador.getNivel());
 
     }
 
@@ -36,7 +36,7 @@ public class PreBatalha implements State{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(new Color(220, 255, 255));
         g.fillRect(0,0,Game.WIDTH,Game.HIGHT);
         g.setColor(Color.BLACK);
         g.setFont(fonte);

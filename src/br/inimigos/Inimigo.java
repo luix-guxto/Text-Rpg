@@ -4,13 +4,11 @@ import br.pixelfonte.Fontes;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Random;
 
 public class Inimigo {
 
     public static boolean dano = false, cres = false, fist = false;
     private static int z = 0, y = 2;
-    private static final int numEnimies = 1;
     private static final int escala = 4;
     private static final int locX = 80;
     private static final int locY = 200;

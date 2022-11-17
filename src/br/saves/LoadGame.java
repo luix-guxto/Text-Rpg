@@ -91,4 +91,33 @@ public class LoadGame {
                 Integer.parseInt(mochila.get("lvlMochila").toString()));
     }
 
+    public static int getXp(int numSave) {
+        load(numSave);
+        return Integer.parseInt(obj.get("xp").toString());
+    }
+
+    public static int getAndares(int numSave) {
+        load(numSave);
+        return Integer.parseInt(obj.get("andares").toString());
+    }
+
+    public static int getXpToUp(int numSave) {
+        load(numSave);
+        return Integer.parseInt(obj.get("xpToUp").toString());
+    }
+
+    public static int getDanoBase(int numSave) {
+        load(numSave);
+        return Integer.parseInt(obj.get("danoBase").toString());
+    }
+
+    public static int getDanoArma(int numSave) {
+        load(numSave);
+        return Integer.parseInt(obj.get("danoArma").toString());
+    }
+
+    public static boolean getBossIsDead(int numSave) {
+        load(numSave);
+        return Boolean.parseBoolean(obj.get("bossIsDead").toString());
+    }
 }

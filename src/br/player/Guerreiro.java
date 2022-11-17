@@ -7,19 +7,53 @@ import br.saves.LoadGame;
 import java.awt.image.BufferedImage;
 
 public class Guerreiro implements Player{
-    String nome;
     Atacks[] atacks;
     Magicas[] magicas;
     private int lvlArma;
 
-    public Guerreiro(String nome) {
+    public Guerreiro() {
 
-        this.nome=nome;
     }
 
 
     @Override
-    public void setScore(int pontos) {
+    public boolean canLvUp() {
+        return getXp()>=getXpToUp();
+    }
+
+    @Override
+    public String getUnlockedMove() {
+        return null;
+    }
+
+    @Override
+    public int getClasse() {
+        return 2;
+    }
+
+
+    @Override
+    public int getDanoBonus() {
+        return 0;
+    }
+
+    @Override
+    public int getDanoArma() {
+        return 0;
+    }
+
+    @Override
+    public int getDanoBase() {
+        return 0;
+    }
+
+    @Override
+    public boolean getBossIsDead() {
+        return false;
+    }
+
+    @Override
+    public void setBossIsDead() {
 
     }
 
@@ -38,15 +72,6 @@ public class Guerreiro implements Player{
 
     }
 
-    @Override
-    public void setNewAtack(String nomeAtaque, int pontosDeUso) {
-
-    }
-
-    @Override
-    public void setNewMagicas(String nomeMagica, int pontosDeUso) {
-
-    }
 
     @Override
     public void armaLvlUp(boolean up) {
@@ -103,6 +128,11 @@ public class Guerreiro implements Player{
     }
 
     @Override
+    public boolean unlockMove() {
+        return false;
+    }
+
+    @Override
     public Atacks[] getAtacks() {
         return atacks;
     }
@@ -113,12 +143,7 @@ public class Guerreiro implements Player{
     }
 
     @Override
-    public Magicas getMagia(int magia) {
-        return magicas[magia];
-    }
-
-    @Override
-    public BufferedImage[] getSprites() {
+    public BufferedImage[] getSpritesBossLive() {
         return new BufferedImage[0];
     }
 

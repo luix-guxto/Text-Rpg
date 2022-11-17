@@ -15,14 +15,14 @@ import java.awt.image.BufferedImage;
 @SuppressWarnings("unused")
 public class Pause implements State{
 
-    private BufferedImage[] classe = new BufferedImage[3];
+    private final BufferedImage[] classe = new BufferedImage[3];
     private BufferedImage menu, icon;
     private final int classeEscolhida = Game.CLASSE;
     private int choice = 0, opt = 1;
-    private String[] options1,
-            options2,
-            options3 = {"ATAQUES","MAGICAS","VOLTAR"},
-            options  = new String[5];
+    private String[] options1;
+    private String[] options2;
+    private final String[] options3 = {"ATAQUES","MAGICAS","VOLTAR"};
+    private final String[] options  = new String[5];
 
 
     @Override
@@ -168,7 +168,6 @@ public class Pause implements State{
                         return;
                     case 3:
                         StateManager.setState(StateManager.BATALHA);
-                        return;
                 }
             }
             else if(opt == 2){
@@ -192,7 +191,6 @@ public class Pause implements State{
                     case 4:
                         choice=0;
                         opt = 1;
-                        return;
                 }
             }
             else if(opt == 3){
@@ -233,8 +231,7 @@ public class Pause implements State{
                     choice=0;
                     opt=3;
                 }
-                return;
-            }
+                 }
             else if(opt == 5){
                      if(choice != 4) {
                          if (Jogador.getMagicas()[choice] == null) return;
@@ -248,8 +245,7 @@ public class Pause implements State{
                     choice=0;
                     opt=3;
                 }
-                return;
-            }
+                 }
         }
 
     }

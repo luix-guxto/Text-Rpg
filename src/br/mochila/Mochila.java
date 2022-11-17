@@ -1,7 +1,5 @@
 package br.mochila;
 
-import br.player.Jogador;
-
 public class Mochila {
 
     public int
@@ -10,12 +8,13 @@ public class Mochila {
             pocoesVida, pocoesPP,
             limitePocoes, lvlMochila;
 
-    public Mochila(int ervas,
-                   int flores,
-                   int minerios,
-                   int couro,
-                   int pocoesVida,
-                   int pocoesPP,
+                        // nome //id
+    public Mochila(int ervas, //0
+                   int flores, //1
+                   int minerios, //2
+                   int couro, //3
+                   int pocoesVida, //4
+                   int pocoesPP, //5
                    int lvlMochila) {
         this.ervas = ervas;
         this.flores = flores;

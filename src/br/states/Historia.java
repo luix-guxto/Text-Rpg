@@ -1,9 +1,7 @@
 package br.states;
 
 import br.Game;
-import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
-import br.saves.LoadGame;
 import br.sprites.ImageLoader;
 
 import javax.swing.*;
@@ -18,7 +16,6 @@ public class Historia implements State{
     String[] text = {"HISTORIA","","Um antigo dragao despertou.","E seu dever, como heroi,","eh deter esse terrivel dragao,","ta ferrado kkk."};
     @Override
     public void init() {
-        Inimigo.newInimigo(LoadGame.getNv(Game.numSave));
         try {
             font = Fontes.PIXEL.deriveFont(Font.PLAIN, 25);
 

@@ -81,38 +81,3 @@ public class Launch
         loading .fechar     (                                   )   ;
     }
 }
-
-// cola para WRITE JSON
-/* escrever o json
-import org.json.simple.JSONObject;
-
-FileWriter writeFile = null;
-JSONObject objetoJson = new JSONObject;
-
-    objetoJson.put("chave", "valor");
-
-    try{
-        writeFile = new FileWriter("path"+"arquivo.json")
-        writeFile.write(objetoJson.toJSONString());
-        writeFile.close();
-    }catch(Exception e){
-    e.printStackTrace();
-    }
- */
-
-// cola para READ JSON
-/* Ler o Json
-*
-*   JSONObject objJSON;
-*   JSONParser parser = new JSONParser();
-*
-*   Pessoa pessoa = new Pessoa();
-*
-*   try{
-*       objJSON = (JSONObject) parser.parse(new FileReader("arquivo.json"));
-*       String texto = (String) objJSON.get("chave");
-*   }catch(Exception e){
-*           e.printStackTrace
-*           }
-*
-* */
