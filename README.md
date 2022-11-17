@@ -59,7 +59,7 @@ Após baixar o jogo, precisa extrair o arquivo.zip para uma pasta da sua prefer�
 Após extrair o arquivo, basta dar um duplo clique no arquivo Text RPG.jar para iniciar o jogo, caso o sistema questione qual aplicativo usar, basta selecionar o Java.
 Caso deseje criar um atalho para o jogo, basta criar um atalho para o arquivo Text RPG.jar.
 
-###[Manual do Jogo](https://github.com/luix-guxto/Text-Rpg/blob/main/Documentacao/ManualGame.md "Manual do jogo")
+#### [Manual do Jogo](https://github.com/luix-guxto/Text-Rpg/blob/main/Documentacao/ManualGame.md "Manual do jogo")
 
 ## Debug e edição do codigo
 
@@ -88,7 +88,7 @@ git clone https://github.com/luix-guxto/Text-Rpg.git
 - Clique em "Apply", e depois em "Run".
 - O jogo vai ser compilado e executado.
 
-###[Documentação do codigo](https://luix-guxto.github.io/Text-Rpg/Documentacao/Documentacao.md "Documentação do codigo")
+#### [Documentação do codigo](https://github.com/luix-guxto/Text-Rpg/blob/main/Documentacao/Documentacao.md "Documentação do codigo")
 
 ## Lista de melhorias do jogo
 
