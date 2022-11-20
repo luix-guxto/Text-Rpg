@@ -1,38 +1,24 @@
 # Manual do Jogo
 
-## Menu
+![Image](../recursos/sprites/icon.png "ICON")
 
-- [Manual do Jogo](#manual-do-jogo)
-  - [Menu](#menu)
-  - [Introdução](#introdução)
-  - [Como Jogar](#como-jogar)
-  - [Objetivo](#objetivo)
-  - [Controles](#controles)
-  - [Personagens](#personagens)
-  - [Fases](#fases)
-  - [Pontuação](#pontuação)
-  - [Dicas](#dicas)
-  - [Créditos](#créditos)
-    - [Desenvolvedores](#desenvolvedores)
-    - [Contribuidores](#contribuidores)
-  - [Licença](#licença)
-  - [Contato](#contato)
-  - [Versões](#versões)
-  - [Bugs](#bugs)
-  - [Contribuidores](#contribuidores-1)
-    - [Lista de contribuidores:](#lista-de-contribuidores)
-  - [Contribuindo](#contribuindo)
-  - [Imagens](#imagens)
-          - [Licença MIT](#licença-mit)
-          - [Tela de carregamento](#tela-de-carregamento)
-          - [Tela inicial](#tela-inicial)
-          - [Tela de menu](#tela-de-menu)
-          - [Tela de ranking](#tela-de-ranking)
-          - [Tela de creditos](#tela-de-creditos)
-          - [Tela de seleção de saves](#tela-de-seleção-de-saves)
-          - [Criando um novo save](#criando-um-novo-save)
-          - [História](#história)
-          - [Tela de batalha](#tela-de-batalha)
+## Menu
+- [Introdução](#introdução)
+- [Como Jogar](#como-jogar)
+- [Objetivo](#objetivo)
+- [Controles](#controles)
+- [Personagens](#personagens)
+- [Fases](#fases)
+- [Pontuação](#pontuação)
+- [Dicas](#dicas)
+- [Créditos](#créditos)
+- [Licença](#licença)
+- [Contato](#contato)
+- [Versões](#versões)
+- [Bugs](#bugs)
+- [Contribuidores](#contribuidores-1)
+- [Contribuindo](#contribuindo)
+- [Imagens](#imagens)
 
 ## Introdução
 
@@ -245,24 +231,40 @@ Para Contribuir, tem duas formas:
 ![Imagem 7](./Resources/SAVES.jpg "Tela de seleção de personagem")
 
 ###### Criando um novo save
-1. Digite o nome do save
+
+- Digite o nome do save
+
 ![Imagem 8](./Resources/NAME.jpg "nome")
-2. Selecione o personagem
+
+- Selecione o personagem
+
 ![Imagem 9](./Resources/PERSONAGENS.jpg "personagens")
 
 ###### História
 ![Imagem 10](./Resources/HISTORIA.jpg "História")
 
 ###### Tela de batalha
-1. Pre batalha
+
+- Pre batalha
+
 ![Imagem 11](./Resources/PREBATTLE.jpg "Pre batalha")
-2. Batalha
+
+- Batalha
+
 ![Imagem 12](./Resources/BATTLE.jpg "Batalha")
-3. PAUSE
+
+- PAUSE
+
 ![Imagem 13](./Resources/PAUSE.jpg "PAUSE")
-4. Pos batalha
+
+- Pos batalha
+
 ![Imagem 14](./Resources/POSBATTLE.jpg "Pos batalha")
-5. BAU
+
+- BAU
+
 ![Imagem 15](./Resources/BAU.jpg "BAU")
-6. GAME OVER
+
+- GAME OVER
+
 ![Imagem 16](./Resources/GAMEOVER.jpg "GAME OVER")
