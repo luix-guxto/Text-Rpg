@@ -19,6 +19,7 @@
 - [Contribuidores](#contribuidores-1)
 - [Contribuindo](#contribuindo)
 - [Imagens](#imagens)
+- [Atalhos](#atalhos)
 
 ## Introdução
 
@@ -268,3 +269,8 @@ Para Contribuir, tem duas formas:
 - GAME OVER
 
 ![Imagem 16](./Resources/GAMEOVER.jpg "GAME OVER")
+
+## Atalhos
+- [Menu](#menu "Menu")
+- [Projeto](https://github.com/luix-guxto/text-rpg/ "Projeto")
+- [README](https://github.com/luix-guxto/text-rpg/#readme "README")
