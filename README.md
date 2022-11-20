@@ -104,7 +104,7 @@ O Jogo ainda está em processo de desenvolvimento, e já foi atribuido as seguin
 - [x] Sistema de desbloqueio de novas Habilidades
 - [x] Sistema de criação de itens
 - [x] Sistema de melhorias
-- [ ] Outras classes (Magos, arqueiros, etc)
+- [x] Classes (Elfo, Mago e Guerreiro)
 - [ ] Outros inimigos (Dragões, etc)
 - [ ] Game-Over Screen
 - [ ] Ranking Local

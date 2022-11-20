@@ -59,4 +59,9 @@ public class Bau implements Enemy{
     public boolean temPontos() {
         return false;
     }
+
+    @Override
+    public int getNivel() {
+        return 0;
+    }
 }

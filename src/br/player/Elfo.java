@@ -15,9 +15,7 @@ public class Elfo implements Player{
     private BufferedImage[] spritesBossLive, spritesBossDead;
     private int xp, level, xpToUp;
     private String unlockedMove;
-
     private int danoBase, danoArma, lvlArma;
-
     int life, maxLife;
     private boolean bossDead;
 
@@ -73,8 +71,8 @@ public class Elfo implements Player{
             setXp(getXp()-getXpToUp());
             this.level++;
             this.xpToUp+=new Random().nextInt(level)*10;
-            danoBase += new Random().nextInt(3);
-            maxLife += new Random().nextInt(7);
+            danoBase += new Random().nextInt(3)+1;
+            maxLife += new Random().nextInt(7)+1;
             life = maxLife;
             System.out.println("Level up!");
         }
@@ -99,7 +97,7 @@ public class Elfo implements Player{
     public void armaLvlUp(boolean up) {
         if(up){
             lvlArma++;
-            danoArma += new Random().nextInt(3);
+            danoArma += new Random().nextInt(3)+1;
         }
     }
 
@@ -110,7 +108,6 @@ public class Elfo implements Player{
 
     @Override
     public int useAtack(int choice) {
-
         return atacks[choice].useAtack()+danoArma+danoBase;
     }
 
@@ -151,27 +148,32 @@ public class Elfo implements Player{
 
     @Override
     public boolean unlockMove() {
-        if(level>=5 && atacks[2] == null){
-                atacks[2] = new Atacks(2, "Chuva de Flechas", 20);
+        if(level >= 5 && atacks[2] == null){
+                atacks[2] = new Atacks(5, "Chuva de Flechas", 20);
                 unlockedMove = "Chuva de Flechas";
                 return true;
-        } else if(level>=10 && magicas[1] == null){
+        }
+        else if(level >= 10 && magicas[1] == null){
                 magicas[1] = new Magicas(1, "Flecha de Raios", 1, 30);
                 unlockedMove = "Flecha de Raios";
                return true;
-        } else if (level>=20 && atacks[3]==null) {
+        }
+        else if (level >= 20 && atacks[3] == null) {
                 atacks[3] = new Atacks(1, "Flecha Flamejante", 30);
                 unlockedMove = "Flecha Flamejante";
                 return true;
-        } else if (level>=30 && magicas[2]==null) {
-                magicas[2] = new Magicas(1, "Flecha de Gelo", 1, 30);
+        }
+        else if (level >= 30 && magicas[2] == null) {
+                magicas[2] = new Magicas(5, "Flecha de Gelo", 1, 30);
                 unlockedMove = "Flecha de Gelo";
                 return true;
-        } else if (level>=50 && magicas[3]==null) {
+        }
+        else if (level >= 50 && magicas[3] == null) {
                 magicas[3] = new Magicas(1, "Flecha Elemental", 1, 40);
                 unlockedMove = "Flecha Elemental";
                 return true;
-        }else{
+        }
+        else{
                 return false;
         }
     }
@@ -215,7 +217,7 @@ public class Elfo implements Player{
             level = 1;
             atacks[0] = new Atacks(25, "Atirar Flecha",10);
             atacks[1] = new Atacks(50, "Bater com o Arco",5);
-            magicas[0] = new Magicas(1, "Recovery", 2, 20);
+            magicas[0] = new Magicas(5, "Recovery", 2, 20);
         }else{
             for (int i = 0; i<4; i++) {
                 try{

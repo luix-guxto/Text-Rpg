@@ -11,7 +11,7 @@ public class Inimigo {
 
     public static boolean dano = false, cres = false, fist = false;
     private static int z = 0, y = 2;
-    private static final int escala = 4;
+    private static final int escala = 2;
     private static final int locX = 80;
     private static final int locY = 200;
     private static boolean isInimigo;
@@ -31,8 +31,17 @@ public class Inimigo {
         cres=false;
 
         // Iniciar inimigo
-        if(new Random().nextInt(2)==0){
-            inimigo = new Bau();
+        if(new Random().nextInt(10)==0){
+            int rn = new Random().nextInt(3);
+            if(rn==0) {
+                inimigo = new Bau();
+            }
+            else if (rn == 1) {
+                inimigo = new Med();
+            }
+            else {
+                inimigo = new Pp();
+            }
             isInimigo = false;
         }else{
             int rn = new Random().nextInt(Jogador.getNivel());
@@ -44,8 +53,8 @@ public class Inimigo {
                 System.exit(0);
             }
             else {
-                System.out.println("Inimigo aranha");
                 inimigo = new Aranha(Jogador.getNivel());
+                System.out.println("\nInimigo aranha nv: "+inimigo.getNivel());
             }
             isInimigo=true;
         }

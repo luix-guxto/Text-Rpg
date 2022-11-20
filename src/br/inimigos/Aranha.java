@@ -94,4 +94,9 @@ public class Aranha implements Enemy{
         return pontos>0;
 
     }
+
+    @Override
+    public int getNivel() {
+        return nv;
+    }
 }

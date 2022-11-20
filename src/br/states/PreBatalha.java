@@ -43,9 +43,9 @@ public class PreBatalha implements State{
         y+=g.getFontMetrics(fonte).getHeight();
         if(Inimigo.getNome()!=null) {
             if (Inimigo.isInimigo()) {
-                g.drawString("apareceu um novo inimigo", Game.WIDTH / 2 - g.getFontMetrics().stringWidth("apareceu um novo inimigo") / 2, y);
+                g.drawString("Apareceu um novo inimigo", Game.WIDTH / 2 - g.getFontMetrics().stringWidth("apareceu um novo inimigo") / 2, y);
             } else {
-                g.drawString("que Sorte um Bau", Game.WIDTH / 2 - g.getFontMetrics().stringWidth("que Sorte um Bau") / 2, y);
+                g.drawString("Que sorte!", Game.WIDTH / 2 - g.getFontMetrics().stringWidth("Que sorte") / 2, y);
             }
         }
 
@@ -85,7 +85,31 @@ public class PreBatalha implements State{
             if(Inimigo.isInimigo()){
                 StateManager.setState(StateManager.BATALHA);
             }else{
-                StateManager.setState(StateManager.POSBATALHA);
+                String nome = Inimigo.getNome();
+                switch (nome){
+                    case "Bau de Itens":
+                        StateManager.setState(StateManager.POSBATALHA);
+                        break;
+                    case "Medical Kit":
+                        Jogador.recVida(Jogador.getVidaMax());
+                        Inimigo.newInimigo();
+                        StateManager.setState(StateManager.PREBATALHA);
+                        break;
+                    case "Pontos de Poder":
+                        for (int i = 0; i < Jogador.getMagicas().length; i++) {
+                            try{
+                                Jogador.recPonto(false, Jogador.getPontosUsoMax(i, false), i);
+                            }catch (Exception ignored){}
+                        }
+                        for (int i = 0; i < Jogador.getAtacks().length; i++) {
+                            try{
+                                Jogador.recPonto(true, Jogador.getPontosUsoMax(i, true), i);
+                            }catch (Exception ignored){}
+                        }
+                        Inimigo.newInimigo();
+                        StateManager.setState(StateManager.PREBATALHA);
+                        break;
+                }
             }
         }
     }

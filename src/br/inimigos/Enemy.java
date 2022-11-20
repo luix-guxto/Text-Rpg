@@ -14,4 +14,6 @@ public interface Enemy {
     String getNomeAtaque();
 
     boolean temPontos();
+
+    int getNivel();
 }

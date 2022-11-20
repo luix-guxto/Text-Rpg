@@ -1,7 +1,6 @@
 package br.states;
 
 import br.Game;
-import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
 import br.player.Jogador;
 import br.sprites.ImageLoader;
@@ -35,7 +34,7 @@ public class CreatePlayer implements State{
 
   Font font1, font2;
 
-  String[] clases = {"Elfo", "Mago", "Guerreiro"};
+  String[] clases = {"Elfo . Facil", "Mago . Medio", "Guerreiro . Dificil"};
 
   @Override
   public void init () {
