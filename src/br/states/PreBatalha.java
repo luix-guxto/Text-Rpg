@@ -26,8 +26,6 @@ public class PreBatalha implements State{
         fonte = Fontes.PIXEL.deriveFont(Font.PLAIN, 25);
         fonte1 = Fontes.PIXEL.deriveFont(Font.BOLD, 28);
         Fundo.newFundo();
-        Inimigo.newInimigo(Jogador.getNivel());
-
     }
 
     @Override
@@ -41,9 +39,15 @@ public class PreBatalha implements State{
         g.setColor(Color.BLACK);
         g.setFont(fonte);
         int y = 50;
-        g.drawString("Voce andou a frente,", Game.WIDTH/2-g.getFontMetrics().stringWidth("Voce andou a frente,")/2,y);
+        g.drawString("Voce subiu um andar,", Game.WIDTH/2-g.getFontMetrics().stringWidth("Voce subiu um andar,")/2,y);
         y+=g.getFontMetrics(fonte).getHeight();
-        g.drawString("apareceu um novo inimigo", Game.WIDTH/2-g.getFontMetrics().stringWidth("apareceu um novo inimigo")/2,y);
+        if(Inimigo.getNome()!=null) {
+            if (Inimigo.isInimigo()) {
+                g.drawString("apareceu um novo inimigo", Game.WIDTH / 2 - g.getFontMetrics().stringWidth("apareceu um novo inimigo") / 2, y);
+            } else {
+                g.drawString("que Sorte um Bau", Game.WIDTH / 2 - g.getFontMetrics().stringWidth("que Sorte um Bau") / 2, y);
+            }
+        }
 
         g.setColor(Color.RED);
         g.setFont(fonte1);
@@ -55,10 +59,18 @@ public class PreBatalha implements State{
 
         y+=g.getFontMetrics(fonte1).getHeight();
 
-        Inimigo.icon(g,Game.WIDTH/2-Inimigo.getSprite(2).getWidth()*8/2,y, 8);
+        if(Inimigo.isInimigo()){
+            Inimigo.icon(g,Game.WIDTH/2-Inimigo.getSprite(2).getWidth()*8/2,y, 8);
+        }else{
+            g.drawImage(Inimigo.getSprite(2), Game.WIDTH/2-Inimigo.getSprite(2).getWidth()/4,y, Inimigo.getSprite(2).getWidth()/2,Inimigo.getSprite(2).getHeight()/2,null);
+        }
         y=600;
         g.setColor(Color.BLACK);
-        g.drawString("Pressione ENTER para batalhar...", Game.WIDTH/2-g.getFontMetrics().stringWidth("Pressione ENTER para batalhar...")/2,y);
+        if(Inimigo.isInimigo()){
+            g.drawString("Pressione ENTER para batalhar...", Game.WIDTH/2-g.getFontMetrics().stringWidth("Pressione ENTER para batalhar...")/2,y);
+        }else{
+            g.drawString("Pressione ENTER para abrir o bau...", Game.WIDTH/2-g.getFontMetrics().stringWidth("Pressione ENTER para abrir o bau...")/2,y);
+        }
     }
 
     @Override
@@ -70,7 +82,11 @@ public class PreBatalha implements State{
     public void KeyReleased(int cod) {
 
         if(cod == KeyEvent.VK_ENTER){
-            StateManager.setState(StateManager.BATALHA);
+            if(Inimigo.isInimigo()){
+                StateManager.setState(StateManager.BATALHA);
+            }else{
+                StateManager.setState(StateManager.POSBATALHA);
+            }
         }
     }
 }

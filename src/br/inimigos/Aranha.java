@@ -80,7 +80,7 @@ public class Aranha implements Enemy{
 
     @Override
     public int getXp() {
-        return 220;
+        return 20+nv;
     }
 
     @Override

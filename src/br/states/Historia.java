@@ -1,6 +1,7 @@
 package br.states;
 
 import br.Game;
+import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
 import br.sprites.ImageLoader;
 
@@ -25,6 +26,7 @@ public class Historia implements State{
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        Inimigo.newInimigo();
     }
 
     @Override

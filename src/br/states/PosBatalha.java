@@ -15,11 +15,12 @@ import java.util.Random;
 public class PosBatalha implements State{
 
     private int xp, lvl, qtdItens, coolDown, xpUpper, xpToUp, xpInicial;
-    private boolean unlockedMove;
+    private boolean unlockedMove, isBau;
     private String unlockedMoveName, nameItem;
 
     @Override
     public void init() {
+        isBau = Inimigo.isInimigo();
         unlockedMove = false;
         unlockedMoveName = "";
         xpUpper = xpInicial = Jogador.getXp();
@@ -62,6 +63,7 @@ public class PosBatalha implements State{
         Jogador.addAndares();
         SaveGame sv = new SaveGame();
         sv.salvarJogo(Jogador.getBossIsDead(),Jogador.getDanoArma(), Jogador.getDanoBase(), Jogador.getAndares(), Jogador.getClasse(), Jogador.getNome(), Jogador.getVida(), Jogador.getXp(), Jogador.getXpToLvUp(), Jogador.getNivel(), Jogador.getAtacks(), Jogador.getMagicas(), Game.numSave, Bag.mochila);
+        Inimigo.newInimigo();
     }
 
     @Override
@@ -83,29 +85,35 @@ public class PosBatalha implements State{
 
         g.setColor(Color.BLACK);
         g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 28));
-        String title = "Recompensas do andar "+Jogador.getAndares();
+        String title;
+        if(Inimigo.isInimigo()){
+            title = "Recompensas do andar "+Jogador.getAndares();
+        }else{
+            title = "Recompensas do bau . Andar "+Jogador.getAndares();
+        }
         g.drawString(title, Game.WIDTH/2-g.getFontMetrics().stringWidth(title)/2, 100);
-
         g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 20));
         // mostra o que ganhou
         int y = 380;
-        g.drawString("Voce ganhou "+xp+" de XP", 50, y);
-        y+=30;
-        if(lvl==1){
-            g.drawString("Voce subiu de nivel uma vez", 50, y);
-            y+=30;
-        } else if (lvl>1) {
-            g.drawString("Voce subiu de nivel "+lvl+" vezes", 50, y);
-            y+=30;
-        }
-        if(unlockedMove){
-            y+=10;
-            g.drawString("Voce aprendeu um novo move!", 50, y);
-            y+=30;
-            g.setColor(Color.RED);
-            g.drawString(unlockedMoveName, 50, y);
-            y+=40;
-            g.setColor(Color.BLACK);
+        if(isBau){
+            g.drawString("Voce ganhou " + xp + " de XP", 50, y);
+            y += 30;
+            if (lvl == 1) {
+                g.drawString("Voce subiu de nivel uma vez", 50, y);
+                y += 30;
+            } else if (lvl > 1) {
+                g.drawString("Voce subiu de nivel " + lvl + " vezes", 50, y);
+                y += 30;
+            }
+            if (unlockedMove) {
+                y += 10;
+                g.drawString("Voce aprendeu um novo move!", 50, y);
+                y += 30;
+                g.setColor(Color.RED);
+                g.drawString(unlockedMoveName, 50, y);
+                y += 40;
+                g.setColor(Color.BLACK);
+            }
         }
         g.drawString("Voce ganhou "+qtdItens+" "+nameItem, 50, y);
 

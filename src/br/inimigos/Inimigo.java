@@ -1,9 +1,11 @@
 package br.inimigos;
 
 import br.pixelfonte.Fontes;
+import br.player.Jogador;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Inimigo {
 
@@ -12,11 +14,13 @@ public class Inimigo {
     private static final int escala = 4;
     private static final int locX = 80;
     private static final int locY = 200;
+    private static boolean isInimigo;
 
     private static Enemy inimigo;
     private static int xx, yy, llargura, aaltura;
 
-    public static void newInimigo(int lvlPlayer) {
+    public static void newInimigo() {
+        System.out.println("Inimigo criado");
 
         fist = true;
 
@@ -27,7 +31,24 @@ public class Inimigo {
         cres=false;
 
         // Iniciar inimigo
-        inimigo = new Aranha(lvlPlayer);
+        if(new Random().nextInt(2)==0){
+            inimigo = new Bau();
+            isInimigo = false;
+        }else{
+            int rn = new Random().nextInt(Jogador.getNivel());
+            if(rn>=50){
+                System.out.println("inimigo Boss");
+                System.exit(0);
+            }else if(rn>=40) {
+                System.out.println("Inimigo");
+                System.exit(0);
+            }
+            else {
+                System.out.println("Inimigo aranha");
+                inimigo = new Aranha(Jogador.getNivel());
+            }
+            isInimigo=true;
+        }
 
     }
 
@@ -112,5 +133,9 @@ public class Inimigo {
 
     public static int getXp() {
         return inimigo.getXp();
+    }
+
+    public static boolean isInimigo() {
+        return isInimigo;
     }
 }
