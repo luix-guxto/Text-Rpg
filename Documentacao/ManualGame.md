@@ -269,7 +269,7 @@ Para Contribuir, tem duas formas:
 
 - GAME OVER
 
-![Imagem 16](./Resources/GAMEOVER.jpG "GAME OVER")
+![Imagem 16](./Resources/GAMEOVER.jpg "GAME OVER")
 
 ## Atalhos
 - [Menu](#menu "Menu")
