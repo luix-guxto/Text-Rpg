@@ -22,7 +22,11 @@ public class LoadGame {
 
     public static String getNome(int numSave){
         load(numSave);
-        return obj.get("nome").toString();
+        try{
+            return obj.get("nome").toString();
+        }catch (Exception ignored){
+            return null;
+        }
     }
 
     public static int getClasse(int i) {

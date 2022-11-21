@@ -192,13 +192,13 @@ public class CreatePlayer implements State{
             pos=0;
           }
           name[pos]="";
-
-
         } else if (tecl == teclado.length - 2) {
-          for (String s : name) {
-            nome = nome.concat(s);
+          if(!name[0].equals("")){
+            for (String s : name) {
+              nome = nome.concat(s);
+            }
+            pross = 1;
           }
-          pross=1;
         }else{
           if(pos== name.length){return;}
           name[pos]=teclado[tecl];

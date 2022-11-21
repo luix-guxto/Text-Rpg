@@ -4,6 +4,7 @@ import br.Game;
 import br.inimigos.Inimigo;
 import br.pixelfonte.Fontes;
 import br.player.Jogador;
+import br.saves.Delete;
 import br.saves.LoadGame;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;
@@ -40,7 +41,7 @@ public class SelectSave implements State{
             }catch (Exception e){
                 e.printStackTrace();
             }
-            if (files[i].exists()) {
+            if (files[i].exists() && LoadGame.getNome(i)!=null) {
                 haveSave[i] = true;
                 clases[i] = LoadGame.getClasse(i);
                 saves[i] = i + 1 +". "+ LoadGame.getNome(i)+" _ Nv. "+LoadGame.getNv(i);
@@ -141,6 +142,8 @@ public class SelectSave implements State{
             if(cod == KeyEvent.VK_BACK_SPACE){
                 if(haveSave[choice]) {
                     Game.numSave = choice;
+                    Delete delete = new Delete();
+                    delete.deleteSave(choice);
                     StateManager.setState(StateManager.CREATE_PLAYER);
                 }
             }

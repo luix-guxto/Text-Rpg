@@ -129,7 +129,7 @@ O outro on-line, onde mostra a pontuação global.
 As Classificações são sempre salvas com:
 - Nome do jogador
 - Pontuação do jogador
-- Data do jogador
+- Data do jogo
 - Nivel do jogador
 - Personagem escolhido
 

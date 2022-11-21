@@ -20,7 +20,6 @@ public class Inimigo {
     private static int xx, yy, llargura, aaltura;
 
     public static void newInimigo() {
-        System.out.println("Inimigo criado");
 
         fist = true;
 
@@ -54,10 +53,10 @@ public class Inimigo {
             }
             else {
                 inimigo = new Aranha(Jogador.getNivel());
-                System.out.println("\nInimigo aranha nv: "+inimigo.getNivel());
             }
             isInimigo=true;
         }
+        System.out.println(inimigo.getNome()+": "+inimigo.getNivel());
 
     }
 

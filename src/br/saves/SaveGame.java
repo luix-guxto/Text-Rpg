@@ -21,7 +21,7 @@ public class SaveGame {
             }
         } catch (Exception e){e.printStackTrace();}
     }
-    private void save(JSONObject jsonObject, int numSave){
+    public void save(JSONObject jsonObject, int numSave){
         try{
             save = new FileWriter("./saves/"+numSave+".json");
             save.write(jsonObject.toJSONString());

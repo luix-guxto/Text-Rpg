@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 
 public class StateManager implements KeyListener {
     // total de estados existentes
-    private static final int numberStates = 12;
+    private static final int numberStates = 13;
 
     // array dos stados de jogo
     public static State[] states = new State[numberStates];
@@ -27,7 +27,8 @@ public class StateManager implements KeyListener {
             BATALHA=8,
             PAUSE=9,
             POSBATALHA=10,
-            GAME_OVER=11;
+            GAME_OVER=11,
+            RANKING_ONLINE=12;
 
     public StateManager(){
         states[MENU]=new Menu();
@@ -42,6 +43,7 @@ public class StateManager implements KeyListener {
         states[PAUSE]=new Pause();
         states[POSBATALHA]=new PosBatalha();
         states[GAME_OVER]=new GameOver();
+        states[RANKING_ONLINE]=new RankingOnline();
         states[PREBATALHA].initFonte();
     }
 
