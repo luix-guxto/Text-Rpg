@@ -81,7 +81,8 @@ Por se tratar de um jogo RPG, você possui os seguintes moves:
 - S | Down — Move a seleção para baixo
 - A | Left — Move a seleção para esquerda
 - D | Right — Move a seleção para direita
-- Enter — a seleção
+- Enter — escolhe a seleção
+- BACKSPACE — função especial
 - Esc — Volta para o menu anterior
 
 ## Personagens
@@ -100,7 +101,7 @@ de dano que você causa e vida que possui.
 As fases são divididas em andares, onde cada andar possui um inimigo diferente.
 Em cada andar, pode surgir um item secreto (10% de chance), que pode ser:
  - Um kit de cura (Cura toda a sua vida)
- - Uma cama de descanso (Recupera os PP's de todos os moves)
+ - Um kit de PP (Recupera o PP's de todos os moves)
  - Um baú de itens (Sorteia um item aleatório)
 
 Ou um inimigo.
@@ -223,7 +224,7 @@ Para Contribuir, tem duas formas:
 ![Imagem 4](./Resources/MAIN.jpg "Tela de menu")
 
 ###### Tela de ranking
-![Imagem 5](./Resources/RANKING.jpg "Tela de ranking")
+![Imagem 5](./Resources/RANK.jpg "Tela de ranking")
 
 ###### Tela de creditos
 ![Imagem 6](./Resources/CREDITS.jpg "Tela de creditos")
@@ -268,7 +269,7 @@ Para Contribuir, tem duas formas:
 
 - GAME OVER
 
-![Imagem 16](./Resources/GAMEOVER.jpg "GAME OVER")
+![Imagem 16](./Resources/GAMEOVER.jpG "GAME OVER")
 
 ## Atalhos
 - [Menu](#menu "Menu")
