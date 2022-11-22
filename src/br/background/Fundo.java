@@ -5,7 +5,7 @@ import  java.util   .Random                                                     
 public class Fundo
 {
 
-        final static int[]
+        private final static int[]
                         x = {
                                 1                                                       ,
                                 258                                                     ,

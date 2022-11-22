@@ -2,7 +2,7 @@ package br.states;
 
 import br.Game;
 import br.inimigos.Inimigo;
-import br.pixelfonte.Fontes;
+import br.fontes.Fontes;
 import br.sprites.ImageLoader;
 
 import javax.swing.*;

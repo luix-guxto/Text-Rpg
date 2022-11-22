@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class RankingLocal {
+
     public RankingLocal(){
         File file = new File("./saves");
         try {
@@ -31,7 +32,6 @@ public class RankingLocal {
             e.printStackTrace();
         }
     }
-
     public JSONArray loadRanking() {
         JSONParser parser = new JSONParser();
         JSONArray obj;
@@ -42,7 +42,6 @@ public class RankingLocal {
         }
         return obj;
     }
-
     public void clearRanking() {
         try {
             FileWriter save = new FileWriter("./saves/ranking.json");

@@ -108,20 +108,6 @@ public class Mochila {
         return lvlMochila;
     }
 
-    @Override
-    public String toString() {
-        return "Mochila{" +
-                "ervas=" + ervas +
-                ", flores=" + flores +
-                ", minerios=" + minerios +
-                ", couro=" + couro +
-                ", pocoesVida=" + pocoesVida +
-                ", pocoesPP=" + pocoesPP +
-                ", limitePocoes=" + limitePocoes +
-                ", lvlMochila=" + lvlMochila +
-                '}';
-    }
-
     public void usePocaoVida() {
         if(this.pocoesVida > 0) {
             this.pocoesVida--;

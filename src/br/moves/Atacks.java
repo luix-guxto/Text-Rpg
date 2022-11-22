@@ -12,25 +12,12 @@ public class Atacks {
         this.nomeAtaque = nomeAtaque;
         this.dano=dano;
     }
-
-    @Override
-    public String toString() {
-        return "Atacks{" +
-                "pontosDeUsoMax=" + pontosDeUsoMax +
-                ", pontosDeUso=" + pontosDeUso +
-                ", nomeAtaque='" + nomeAtaque + '\'' +
-                ", dano=" + dano +
-                '}';
-    }
-
     public int getPontosDeUsoMax() {
         return pontosDeUsoMax;
     }
-
     public int getPontosDeUso() {
         return pontosDeUso;
     }
-
     public int useAtack() {
         if(pontosDeUso>0) {
             this.pontosDeUso--;
@@ -43,11 +30,9 @@ public class Atacks {
             this.pontosDeUso=pontosDeUsoMax;
         }
     }
-
     public String getNomeAtaque() {
         return nomeAtaque;
     }
-
     public int getDano() {
         return dano;
     }

@@ -2,7 +2,7 @@ package br.batalhas;
 
 import br.Game;
 import br.inimigos.Inimigo;
-import br.pixelfonte.Fontes;
+import br.fontes.Fontes;
 import br.player.Jogador;
 import br.states.StateManager;
 
@@ -12,29 +12,26 @@ import java.util.Random;
 
 public class Batalhas {
 
-    private static boolean atttt = false, dan = false;
-
+    private static boolean inimigoAtacando = false, jogadorAtacando = false;
     private static String[] options = {"ATAQUES", "MAGICAS", "MOCHILA", "DESISTIR"};
-    private static int choicc = 0, optt = 0, corrr = 0;
+    private static int escolha = 0, tempoBatalha = 0, tempoCor = 0;
     private static int danoPlayer, danoInimigo;
-
     private static String usedPlayer;
     private static boolean critPlayer, lossPlayer, critInimigo, lossInimigo;
-    private static Color corzin;
+    private static Color corBorda;
 
 
     public static void init(){
-        atttt = false;
-        corzin = new Color(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256));
+        inimigoAtacando = false;
+        corBorda = new Color(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256));
         options = new String[]{"ATAQUES", "MAGICAS", "MOCHILA", "DESISTIR"};
         usedPlayer = null;
         critPlayer= lossPlayer= critInimigo= lossInimigo = false;
-        choicc = optt = corrr = 0;
+        escolha = tempoBatalha = tempoCor = 0;
     }
-
     private static void iniAtac(){
         danoInimigo = Inimigo.ataque();
-        atttt = Inimigo.temUso();
+        inimigoAtacando = Inimigo.temUso();
         int chance = new Random().nextInt(100);
         if(chance>80){
             critInimigo=true;
@@ -52,7 +49,7 @@ public class Batalhas {
         }
     }
     private static void atacar(){
-        dan = true;
+        jogadorAtacando = true;
         danoPlayer=Jogador.atacar();
         int chance = new Random().nextInt(100);
         if(chance>80){
@@ -71,9 +68,9 @@ public class Batalhas {
         }
     }
     private static void magica(){
-        dan=false;
-        dan=Jogador.magDano();
-        if(dan){
+        jogadorAtacando =false;
+        jogadorAtacando =Jogador.magDano();
+        if(jogadorAtacando){
             danoPlayer=Jogador.useMagDan();
             int chance = new Random().nextInt(100);
             if(chance>80){
@@ -114,33 +111,33 @@ public class Batalhas {
 
         /*Movimentação opcoes */ {
             if(cod== KeyEvent.VK_ESCAPE||cod==KeyEvent.VK_BACK_SPACE){
-                if(optt==1||optt==2){
+                if(tempoBatalha ==1|| tempoBatalha ==2){
                     options = new String[]{"ATAQUES", "MAGICAS", "MOCHILA", "DESISTIR"};
-                    optt=0;
+                    tempoBatalha =0;
                 }
             }
             if (cod == KeyEvent.VK_LEFT || cod == KeyEvent.VK_A) {
-                choicc--;
-                if (choicc < 0) {
-                    choicc = options.length - 1;
+                escolha--;
+                if (escolha < 0) {
+                    escolha = options.length - 1;
                 }
             }
             if (cod == KeyEvent.VK_RIGHT || cod == KeyEvent.VK_D) {
-                choicc++;
-                if (choicc >= options.length) {
-                    choicc = 0;
+                escolha++;
+                if (escolha >= options.length) {
+                    escolha = 0;
                 }
             }
             if (cod == KeyEvent.VK_UP || cod == KeyEvent.VK_W) {
-                choicc -= 2;
-                if (choicc < 0) {
-                    choicc += 4;
+                escolha -= 2;
+                if (escolha < 0) {
+                    escolha += 4;
                 }
             }
             if (cod == KeyEvent.VK_DOWN || cod == KeyEvent.VK_S) {
-                choicc += 2;
-                if (choicc >= options.length) {
-                    choicc = choicc - options.length;
+                escolha += 2;
+                if (escolha >= options.length) {
+                    escolha = escolha - options.length;
                 }
             }
         }
@@ -148,102 +145,100 @@ public class Batalhas {
 
         if(cod== KeyEvent.VK_ENTER){
 
-            if(optt == 0){
-                switch (choicc){
+            if(tempoBatalha == 0){
+                switch (escolha){
                     case 0:
                         options=Jogador.nomeAtaques();
-                        optt=1;
+                        tempoBatalha =1;
                         return;
                     case 1:
                         options=Jogador.nomeMagicas();
-                        optt=2;
-                        choicc=0;
+                        tempoBatalha =2;
+                        escolha =0;
                         return;
                     case 2:
-                        choicc=0;
+                        escolha =0;
                         StateManager.setState(StateManager.PAUSE);
                         return;
                     case 3:
-                        choicc=0;
+                        escolha =0;
                         Jogador.receberDano(Jogador.getVida());
-                        optt=8;
+                        tempoBatalha =8;
                         return;
                 }
             }
 
-            if(optt == 1){
-                if(Jogador.getAtacks()[choicc]!=null&&Jogador.getAtacks()[choicc].getPontosDeUso()>0){
-                    Jogador.setMove(choicc);
+            if(tempoBatalha == 1){
+                if(Jogador.getAtacks()[escolha]!=null&&Jogador.getAtacks()[escolha].getPontosDeUso()>0){
+                    Jogador.setMove(escolha);
                     usedPlayer=Jogador.getAtack().getNomeAtaque();
-                    optt=3;
-                    choicc=0;
+                    tempoBatalha =3;
+                    escolha =0;
                     return;
                 }
             }
 
-            if(optt == 2){
-                if(Jogador.getMagicas()[choicc]!=null&&Jogador.getMagicas()[choicc].getPontosDeUso()>0){
-                    Jogador.setMove(choicc);
+            if(tempoBatalha == 2){
+                if(Jogador.getMagicas()[escolha]!=null&&Jogador.getMagicas()[escolha].getPontosDeUso()>0){
+                    Jogador.setMove(escolha);
                     usedPlayer=Jogador.getMagica().getNomeMagica();
-                    optt=4;
-                    choicc=0;
+                    tempoBatalha =4;
+                    escolha =0;
                     return;
                 }
             }
 
-            if(optt == 3){
+            if(tempoBatalha == 3){
                 atacar();
-                optt=5;
+                tempoBatalha =5;
                 return;
             }
 
-            if(optt == 4){
+            if(tempoBatalha == 4){
                 magica();
-                optt = 5;
+                tempoBatalha = 5;
                 return;
             }
 
-            if(optt == 5){
+            if(tempoBatalha == 5){
 
                 if(Inimigo.getVida()<=0){
-                optt = 7;
+                tempoBatalha = 7;
                 return;
                 }
                 iniAtac();
-                optt=6;
+                tempoBatalha =6;
                 return;
             }
 
-            if(optt == 6){
+            if(tempoBatalha == 6){
                 if(Jogador.getVida()<=0){
-                    optt=8;
+                    tempoBatalha =8;
                     return;
                 }
                 options=new String[]{"ATAQUES", "MAGICAS", "MOCHILA", "DESISTIR"};
-                optt = 0;
+                tempoBatalha = 0;
                 return;
             }
 
-            if(optt == 7){
+            if(tempoBatalha == 7){
                 StateManager.setState(StateManager.POSBATALHA);
                 return;
             }
 
-            if(optt == 8){
+            if(tempoBatalha == 8){
                 StateManager.setState(StateManager.GAME_OVER);
             }
         }
     }
-
-
     public static void render(Graphics g){
 
-        corrr++;
-        if(corrr>=20){
-            corrr=0;
-            corzin=new Color(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256));
+        tempoCor++;
+        if(tempoCor >=20){
+            tempoCor =0;
+            corBorda =new Color(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256));
         }
-        g.setColor(corzin); // cor borda
+        g.setColor(corBorda); // cor borda
         int yy = 420;
         int yyy = 500;
         g.fillRect(0,yy,Game.WIDTH, Game.HIGHT-yy);
@@ -254,10 +249,10 @@ public class Batalhas {
         g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 18));
 
         // Ataque, Magica, Mochila, Desistir
-        if(optt == 0||optt == 2||optt == 1) {
+        if(tempoBatalha == 0|| tempoBatalha == 2|| tempoBatalha == 1) {
             for (int i = 0; i < options.length; i++) {
                 g.setColor(corTexto);
-                if (choicc == i) {
+                if (escolha == i) {
                     g.setColor(corSelec);
                 }
                 int y = 500;
@@ -273,18 +268,18 @@ public class Batalhas {
                     x = 230;
                 }
 
-                if(optt==1||optt==2){
+                if(tempoBatalha ==1|| tempoBatalha ==2){
                     g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 14));
                 }
                 g.drawString(options[i], x, y);
                 g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 18));
                 g.setColor(new Color(2, 52, 180));
                 g.fillRect(430,yy+10,Game.WIDTH-430-10,Game.HIGHT-yy-20);
-                g.setColor(corzin);
+                g.setColor(corBorda);
                 g.fillRect(430,yy,10,Game.HIGHT-yy);
 
                 g.setColor(Color.WHITE);
-                if(optt==0){
+                if(tempoBatalha ==0){
                     g.drawString("Selecione o que", 470,yy + 40);
                     g.drawString("deseja fazer", 470+(g.getFontMetrics().stringWidth("Selecione o que")/2)-g.getFontMetrics().stringWidth("deseja fazer")/2,yy + 65);
 
@@ -308,26 +303,26 @@ public class Batalhas {
 
                 } else {
 
-                    if(optt == 1){
+                    if(tempoBatalha == 1){
                         g.drawString("ATAQUES", 525,470);
-                        g.drawString("Dano.  "+Jogador.getDano(choicc, true),450,600);
+                        g.drawString("Dano.  "+Jogador.getDano(escolha, true),450,600);
                     }else{
                         g.drawString("MAGIAS", 525,470);
-                        if(!Jogador.isDanMag(choicc)){
-                            g.drawString("Recuperar "+Jogador.getDano(choicc, false)+" de vida",450,600);
+                        if(!Jogador.isDanMag(escolha)){
+                            g.drawString("Recuperar "+Jogador.getDano(escolha, false)+" de vida",450,600);
                         }else{
-                            g.drawString("Dano.  "+Jogador.getDano(choicc, false),450,600);
+                            g.drawString("Dano.  "+Jogador.getDano(escolha, false),450,600);
                         }
                     }
 
-                    g.drawString("Pontos de uso. "+Jogador.getPontosUso(choicc, optt==1)+" ! "+Jogador.getPontosUsoMax(choicc, optt==1),450,650);
+                    g.drawString("Pontos de uso. "+Jogador.getPontosUso(escolha, tempoBatalha ==1)+" ! "+Jogador.getPontosUsoMax(escolha, tempoBatalha ==1),450,650);
 
                 }
             }
         }
 
         //Voltar
-        if(optt == 1 || optt == 2){
+        if(tempoBatalha == 1 || tempoBatalha == 2){
             g.setColor(Color.RED);
             g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 18));
             g.drawString("[ESC]_[BACKSPACE] __ VOLTAR", 20,Game.HIGHT-20);
@@ -336,7 +331,7 @@ public class Batalhas {
 
         g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 22));
         // player usou
-        if(optt == 3 || optt==4){
+        if(tempoBatalha == 3 || tempoBatalha ==4){
             g.setColor(corTexto);
             g.drawString(Jogador.getNome()+" usou "+usedPlayer,50,yyy);
 
@@ -346,7 +341,7 @@ public class Batalhas {
         }
 
         // player ataque
-        if(optt == 5 && dan){
+        if(tempoBatalha == 5 && jogadorAtacando){
             g.setColor(corTexto);
 
             if(critPlayer){
@@ -364,7 +359,7 @@ public class Batalhas {
             // Continue
             g.setColor(corTexto);
             g.drawString("[ENTER]...", 500,yyy+150);
-        } else if (!dan && optt==5) {
+        } else if (!jogadorAtacando && tempoBatalha ==5) {
             g.setColor(corTexto);
 
             if(critPlayer){
@@ -384,10 +379,10 @@ public class Batalhas {
         }
 
         // inimigo ataque
-        if(optt == 6){
+        if(tempoBatalha == 6){
             g.setColor(corTexto);
 
-            if(atttt) {
+            if(inimigoAtacando) {
                 if (critInimigo) {
                     g.drawString(Inimigo.getNome() + " usou o ataque " + Inimigo.getNomeAtaque(), 50, yyy);
                     g.drawString("Esse ataque causou dano critico de "+danoInimigo, 50, yyy+50);
@@ -411,7 +406,7 @@ public class Batalhas {
         }
 
         // venceu
-        if(optt == 7){
+        if(tempoBatalha == 7){
             g.setColor(corTexto);
 
             g.drawString(Inimigo.getNome()+" morreu!", 50,yyy);
@@ -423,7 +418,7 @@ public class Batalhas {
         }
 
         // morreu
-        if(optt == 8){
+        if(tempoBatalha == 8){
             g.setColor(corSelec);
 
             g.drawString(Jogador.getNome()+" morreu, acabou tudo...", 50,yyy);

@@ -3,7 +3,7 @@ package br.states;
 import br.Game;
 import br.background.Fundo;
 import br.mochila.Bag;
-import br.pixelfonte.Fontes;
+import br.fontes.Fontes;
 import br.player.Jogador;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;

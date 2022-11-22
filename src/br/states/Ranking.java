@@ -1,6 +1,6 @@
 package br.states;
 import br.Game;
-import br.pixelfonte.Fontes;
+import br.fontes.Fontes;
 import br.pontuacao.Pontuacao;
 import br.saves.RankingLocal;
 import org.json.simple.JSONArray;
@@ -15,12 +15,13 @@ import java.util.Collections;
 
 @SuppressWarnings("unused")
 public class Ranking implements State{
-    ArrayList<Pontuacao> ranking = new ArrayList<>();
+    ArrayList<Pontuacao> ranking;
     @Override
 
     @SuppressWarnings("unchecked")
     public void init() {
         RankingLocal rankingLocal = new RankingLocal();
+        ranking = new ArrayList<>();
         JSONArray rankinJson = rankingLocal.loadRanking();
         for (int i = 0; i<rankinJson.size(); i++){
             JSONParser parser = new JSONParser();

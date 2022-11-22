@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 @SuppressWarnings("ALL")
 public class SaveGame {
     FileWriter save;

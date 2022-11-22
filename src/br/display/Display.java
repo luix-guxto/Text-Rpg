@@ -56,9 +56,9 @@ public class Display
         canvas  .createBufferStrategy(3)                                        ;
     }
 
-    public void             setKeyListener  (KeyListener kl )
+    public void             setKeyListener  (KeyListener keyListener)
     {
-        jframe  .addKeyListener(kl)                                             ;
+        jframe  .addKeyListener(keyListener)                                             ;
     }
 
     @SuppressWarnings("unused")

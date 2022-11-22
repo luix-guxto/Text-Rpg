@@ -1,4 +1,6 @@
 package br.pontuacao;
+
+
 @SuppressWarnings("all")
 public class Pontuacao implements Comparable{
 
@@ -11,15 +13,12 @@ public class Pontuacao implements Comparable{
     public String getNome() {
         return nome;
     }
-
     public int getScore() {
         return score;
     }
-
     public String getData() {
         return data;
     }
-
     public String getClasse() {
         String clas;
         switch (classe){
@@ -38,11 +37,9 @@ public class Pontuacao implements Comparable{
         }
         return clas;
     }
-
     public int getNivel() {
         return nivel;
     }
-
     public Pontuacao(String nome, int score, String data, int classe, int nivel) {
         this.nome = nome;
         this.score = score;
@@ -50,7 +47,6 @@ public class Pontuacao implements Comparable{
         this.classe = classe;
         this.nivel = nivel;
     }
-
     @Override
     public String toString(){
         String clas;
@@ -70,7 +66,6 @@ public class Pontuacao implements Comparable{
         }
         return "Nome: "+nome+" Score: "+score+" Data: "+data+" Classe: "+clas+" Nivel: "+nivel;
     }
-
     @Override
     public int compareTo(Object p) {
         Pontuacao o = (Pontuacao) p;

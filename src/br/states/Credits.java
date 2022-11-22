@@ -1,7 +1,7 @@
 package br.states;
 
 import br.Game;
-import br.pixelfonte.Fontes;
+import br.fontes.Fontes;
 import br.sprites.ImageLoader;
 
 import java.awt.*;

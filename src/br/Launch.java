@@ -1,6 +1,6 @@
 package br                                                          ;
 import  br   .display    .Display                                   ;
-import  br   .pixelfonte .Fontes                                    ;
+import  br   .fontes.Fontes                                    ;
 import  br   .sprites    .ImageLoader                               ;
 import  java .awt        .*                                         ;
 import  java .awt        .image.*                                   ;
