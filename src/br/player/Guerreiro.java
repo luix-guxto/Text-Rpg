@@ -70,11 +70,20 @@ public class Guerreiro implements Player{
         if(getXp()>=getXpToUp()){
             setXp(getXp()-getXpToUp());
             this.level++;
-            this.xpToUp+=new Random().nextInt(level)*10;
-            danoBase++;
-            maxLife += new Random().nextInt(3)+1;
-            life = maxLife;
-            System.out.println("Level up!");
+            this.xpToUp+=(new Random().nextInt(level)+1)*20;
+            danoBase+=new Random().nextInt(3)+1;
+            life = maxLife += new Random().nextInt(40)+1;
+
+            for (Atacks atack : atacks) {
+                if (atack != null) {
+                    atack.setPontosDeUso(atack.getPontosDeUsoMax());
+                }
+            }
+            for (Magicas magica : magicas) {
+                if (magica != null) {
+                    magica.setPontosDeUso(magica.getPontosDeUsoMax());
+                }
+            }
         }
     }
 
@@ -84,7 +93,7 @@ public class Guerreiro implements Player{
     }
 
     @Override
-    public void setVida(int vida) {
+    public void setVida(double vida) {
         life+=vida;
         if(life<0){
             life=0;
@@ -101,20 +110,19 @@ public class Guerreiro implements Player{
         }
     }
     @Override
-    public int useMagDan(int choice) {
-        return magicas[choice].useMagica()+danoArma+danoBase;
+    public double useMagDan(int choice) {
+        return magicas[choice].useMagica()*(danoArma+danoBase);
     }
 
     @Override
-    public int useAtack(int choice) {
-        return atacks[choice].useAtack()+danoArma+danoBase;
+    public double useAtack(int choice) {
+        return atacks[choice].useAtack()*(danoArma+danoBase);
     }
 
     @Override
-    public int useMagicas(int choice) {
-        return magicas[choice].useMagica()+danoBase+danoArma;
+    public double useMagicas(int choice) {
+        return magicas[choice].useMagica()*(danoArma+danoBase);
     }
-
     @Override
     public int getLife() {
         return life;
@@ -148,27 +156,27 @@ public class Guerreiro implements Player{
     @Override
     public boolean unlockMove() {
         if(level >= 5 && atacks[2] == null){
-            atacks[2] = new Atacks(5, "Slasher", 20);
+            atacks[2] = new Atacks(5, "Slasher", 5);
             unlockedMove = "Slasher";
             return true;
         }
         else if(level >= 10 && magicas[1] == null){
-            magicas[1] = new Magicas(5, "Recovery", 2, 20);
+            magicas[1] = new Magicas(10, "Recovery", 2, 5);
             unlockedMove = "Recovery";
             return true;
         }
         else if (level >= 20 && atacks[3] == null) {
-            atacks[3] = new Atacks(1, "Fatiamento", 30);
+            atacks[3] = new Atacks(3, "Fatiamento", 7.5);
             unlockedMove = "Fatiamento";
             return true;
         }
         else if (level >= 30 && magicas[2] == null) {
-            magicas[2] = new Magicas(5, "Espada Congelante", 1, 30);
+            magicas[2] = new Magicas(5, "Espada Congelante", 1, 7.5);
             unlockedMove = "Espada Congelante";
             return true;
         }
         else if (level >= 50 && magicas[3] == null) {
-            magicas[3] = new Magicas(1, "Espada Elemental", 1, 50);
+            magicas[3] = new Magicas(3, "Espada Elemental", 1, 12.5);
             unlockedMove = "Espada Elemental";
             return true;
         }
@@ -209,9 +217,9 @@ public class Guerreiro implements Player{
             level = 1;
             xpToUp = 100;
             life = maxLife = 100;
-            atacks[0] = new Atacks(25, "Espadada", 10);
-            atacks[1] = new Atacks(50, "Soco", 5);
-            magicas[0] = new Magicas(5, "Espada Flamejante", 1, 20);
+            atacks[0] = new Atacks(15, "Espadada", 2.5);
+            atacks[1] = new Atacks(20, "Soco", 1.25);
+            magicas[0] = new Magicas(10, "Espada Flamejante", 1, 5);
         }else{
             for (int i = 0; i<4; i++) {
                 try{

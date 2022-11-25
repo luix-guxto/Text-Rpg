@@ -15,7 +15,7 @@ public class Batalhas {
     private static boolean inimigoAtacando = false, jogadorAtacando = false;
     private static String[] options = {"ATAQUES", "MAGICAS", "MOCHILA", "DESISTIR"};
     private static int escolha = 0, tempoBatalha = 0, tempoCor = 0;
-    private static int danoPlayer, danoInimigo;
+    private static double danoPlayer, danoInimigo;
     private static String usedPlayer;
     private static boolean critPlayer, lossPlayer, critInimigo, lossInimigo;
     private static Color corBorda;
@@ -90,25 +90,28 @@ public class Batalhas {
         }
         else{
             danoPlayer=Jogador.useMag();
+            danoPlayer=Jogador.getVidaMax()-Jogador.getVida();
             int chance = new Random().nextInt(100);
             if(chance>80){
                 critPlayer=true;
                 lossPlayer=false;
-                danoPlayer*=2;
                 Jogador.recVida(danoPlayer);
             }else if(chance<10){
                 critPlayer=false;
                 lossPlayer=true;
-                danoPlayer/=2;
+                danoPlayer/=4;
                 Jogador.recVida(danoPlayer);
             }else{
+                danoPlayer/=2;
                 lossPlayer=critPlayer=false;
                 Jogador.recVida(danoPlayer);
             }
         }
     }
     public static void teclas(int cod){
-
+        if(cod == KeyEvent.VK_F1){
+            Inimigo.damage(0);
+        }
         /*Movimentação opcoes */ {
             if(cod== KeyEvent.VK_ESCAPE||cod==KeyEvent.VK_BACK_SPACE){
                 if(tempoBatalha ==1|| tempoBatalha ==2){
@@ -251,6 +254,7 @@ public class Batalhas {
         // Ataque, Magica, Mochila, Desistir
         if(tempoBatalha == 0|| tempoBatalha == 2|| tempoBatalha == 1) {
             for (int i = 0; i < options.length; i++) {
+                g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 18));
                 g.setColor(corTexto);
                 if (escolha == i) {
                     g.setColor(corSelec);
@@ -269,7 +273,7 @@ public class Batalhas {
                 }
 
                 if(tempoBatalha ==1|| tempoBatalha ==2){
-                    g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 14));
+                    g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 15));
                 }
                 g.drawString(options[i], x, y);
                 g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 18));
@@ -296,26 +300,27 @@ public class Batalhas {
                             clases = "Guerreiro";
                             break;
                     }
-
-                    g.drawString("CLASSE.   "+clases,460,yy+190);
-                    g.drawString("NIVEL.      "+Jogador.getNivel(), 460, yy+220);
-                    g.drawString("VIDA.         "+Jogador.getVida()+" ! "+Jogador.getVidaMax(), 460,yy+250);
+                    g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 19));
+                    g.drawString("CLASSE:"+clases,460,yy+190);
+                    g.drawString("NIVEL: "+Jogador.getNivel(), 460, yy+220);
+                    g.drawString("VIDA:  "+Jogador.getVida()+" / "+Jogador.getVidaMax(), 460,yy+250);
 
                 } else {
 
                     if(tempoBatalha == 1){
                         g.drawString("ATAQUES", 525,470);
-                        g.drawString("Dano.  "+Jogador.getDano(escolha, true),450,600);
+                        g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 19));
+                        g.drawString("Dano: "+Jogador.getDano(escolha, true),450,600);
                     }else{
                         g.drawString("MAGIAS", 525,470);
+                        g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 19));
                         if(!Jogador.isDanMag(escolha)){
-                            g.drawString("Recuperar "+Jogador.getDano(escolha, false)+" de vida",450,600);
+                            g.drawString("Recuperar vida!",450,600);
                         }else{
-                            g.drawString("Dano.  "+Jogador.getDano(escolha, false),450,600);
+                            g.drawString("Dano: "+Jogador.getDano(escolha, false),450,600);
                         }
                     }
-
-                    g.drawString("Pontos de uso. "+Jogador.getPontosUso(escolha, tempoBatalha ==1)+" ! "+Jogador.getPontosUsoMax(escolha, tempoBatalha ==1),450,650);
+                    g.drawString("PP: "+Jogador.getPontosUso(escolha, tempoBatalha ==1)+" / "+Jogador.getPontosUsoMax(escolha, tempoBatalha ==1),450,650);
 
                 }
             }
@@ -325,7 +330,7 @@ public class Batalhas {
         if(tempoBatalha == 1 || tempoBatalha == 2){
             g.setColor(Color.RED);
             g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 18));
-            g.drawString("[ESC]_[BACKSPACE] __ VOLTAR", 20,Game.HIGHT-20);
+            g.drawString("[ESC] - [BACKSPACE] --> VOLTAR", 20,Game.HIGHT-20);
         }
 
 

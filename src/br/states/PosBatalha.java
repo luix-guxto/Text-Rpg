@@ -20,6 +20,7 @@ public class PosBatalha implements State{
 
     @Override
     public void init() {
+        Game.lastTime = System.currentTimeMillis();
         isBau = Inimigo.isInimigo();
         unlockedMove = false;
         unlockedMoveName = "";
@@ -38,31 +39,30 @@ public class PosBatalha implements State{
             unlockedMoveName = Jogador.getMoveUnlocked();
         }
         int rn = new Random().nextInt(4);
+        qtdItens = new Random().nextInt(Jogador.getNivel())+1;
+        if(qtdItens>10) qtdItens = 10;
         switch (rn){
             case 0:
                 nameItem = "Ervas";
-                qtdItens = new Random().nextInt(Jogador.getNivel())+1;
+
                 Bag.mochila.addErvas(qtdItens);
                 break;
             case 1:
                 nameItem = "Flores";
-                qtdItens = new Random().nextInt(Jogador.getNivel())+1;
                 Bag.mochila.addFlores(qtdItens);
                 break;
             case 2:
                 nameItem = "Minerios";
-                qtdItens = new Random().nextInt(Jogador.getNivel())+1;
                 Bag.mochila.addMinerios(qtdItens);
                 break;
             case 3:
                 nameItem = "Couros";
-                qtdItens = new Random().nextInt(Jogador.getNivel())+1;
                 Bag.mochila.addCouro(qtdItens);
                 break;
         }
         Jogador.addAndares();
         SaveGame sv = new SaveGame();
-        sv.salvarJogo(Jogador.getBossIsDead(),Jogador.getDanoArma(), Jogador.getDanoBase(), Jogador.getAndares(), Jogador.getClasse(), Jogador.getNome(), Jogador.getVida(), Jogador.getXp(), Jogador.getXpToLvUp(), Jogador.getNivel(), Jogador.getAtacks(), Jogador.getMagicas(), Game.numSave, Bag.mochila);
+        sv.salvarJogo(Jogador.getVidaMax(),Jogador.getBossIsDead(),Jogador.getDanoArma(), Jogador.getDanoBase(), Jogador.getAndares(), Jogador.getClasse(), Jogador.getNome(), Jogador.getVida(), Jogador.getXp(), Jogador.getXpToLvUp(), Jogador.getNivel(), Jogador.getAtacks(), Jogador.getMagicas(), Game.numSave, Bag.mochila);
         Inimigo.newInimigo();
     }
 
@@ -87,9 +87,9 @@ public class PosBatalha implements State{
         g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 28));
         String title;
         if(Inimigo.isInimigo()){
-            title = "Recompensas do andar "+Jogador.getAndares();
+            title = "Recompensas do andar: "+Jogador.getAndares();
         }else{
-            title = "Recompensas do bau . Andar "+Jogador.getAndares();
+            title = "Recompensas do bau - Andar: "+Jogador.getAndares();
         }
         g.drawString(title, Game.WIDTH/2-g.getFontMetrics().stringWidth(title)/2, 100);
         g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 20));
@@ -136,8 +136,8 @@ public class PosBatalha implements State{
         g.setColor(Color.GREEN);
         g.fillRect(posX+5,posY+5,xpBarra,10);
         g.setColor(Color.BLACK);
-        posX = (posX + tamanho/2)-g.getFontMetrics().stringWidth("XP: "+xpUpper+"/"+xpToUp)/2;
-        g.drawString("XP! "+xpUpper+" . "+xpToUp, posX, posY+45);
+        posX = (posX + tamanho/2)-g.getFontMetrics().stringWidth("XP: "+xpUpper+" / "+xpToUp)/2;
+        g.drawString("XP: "+xpUpper+" / "+xpToUp, posX, posY+45);
 
 
         // Prosseguir

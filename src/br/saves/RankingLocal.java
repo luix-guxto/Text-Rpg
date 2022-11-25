@@ -25,8 +25,6 @@ public class RankingLocal {
         try {
             FileWriter save = new FileWriter("./saves/ranking.json");
             save.write(rankinJson.toJSONString());
-            System.out.println("arquivo ranking.json está salvo");
-            System.out.println("\n"+objJson.toJSONString()+"\n");
             save.close();
         } catch (Exception e) {
             e.printStackTrace();

@@ -11,16 +11,20 @@ public class Game implements Runnable
     public static final int             WIDTH       = 700                       ,
                                         HIGHT       = 700                       ;
     public static       int             numSave     = 0                         ,
-                                        CLASSE                                  ;
+                                        CLASSE      = 0                         ;
 
     private       final Display         ds                                      ;
     private       final StateManager    sm                                      ;
     private             Thread          thread                                  ;
     private             boolean         running     = false                     ;
+    public static long fistTime;
+    public static long lastTime;
 
 
     public Game(String[] args)
     {
+        thread = new Thread(this);
+        fistTime = lastTime = System.currentTimeMillis();
         ds = new Display        ("Text-RPG", WIDTH, HIGHT, "/sprites/icon.png") ;
         sm = new StateManager   ()                                              ;
         ds   .setKeyListener    (sm)                                            ;
@@ -53,6 +57,11 @@ public class Game implements Runnable
                     System.exit(0);
             }
         }
+    }
+
+    public static void initTime() {
+        fistTime = System.currentTimeMillis();
+        lastTime = System.currentTimeMillis();
     }
 
     private void render()
@@ -138,6 +147,7 @@ public class Game implements Runnable
 
             if(delta >= 1)
             {
+                Game.lastTime = System.currentTimeMillis();
                 render()                                                        ;
                 update()                                                        ;
                 delta--                                                         ;

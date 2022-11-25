@@ -21,25 +21,9 @@ public class Jogador {
     private static boolean dan = false, frameCrescendo = true;
     private static Player player;
     private static int moveEscolhido = 0;
-    public static Atacks getAtack() {
-        return player.getAtacks()[moveEscolhido];
-    }
-    public static Magicas getMagica() {
-        return player.getMagicas()[moveEscolhido];
-    }
     private static String moveUnlocked;
-    private static int andares;
+    private static int andares, tempo;
 
-    public static boolean unlockMoveOnUp(){
-        boolean canUnlocked = player.unlockMove();
-        if (canUnlocked){
-            moveUnlocked = player.getUnlockedMove();
-        }
-        return canUnlocked;
-    }
-    public static String getMoveUnlocked() {
-        return moveUnlocked;
-    }
     public static void criarJogador(boolean create){
         frameDano =0;
         delayAlteracaoFrame =0;
@@ -58,13 +42,14 @@ public class Jogador {
                     player = new Guerreiro();
                     break;
             }
+            tempo = 0;
             player.init(true);
             SaveGame saveGame = new SaveGame();
             Atacks[] atacks = player.getAtacks();
             Magicas[] magicas = player.getMagicas();
             andares = 0;
             Bag.initBag(true);
-            saveGame.salvarJogo(player.getBossIsDead(), player.getDanoArma(), player.getDanoBase(), andares, Game.CLASSE, CreatePlayer.nome, 100, 0, 100, 1, atacks, magicas, Game.numSave, Bag.mochila);
+            saveGame.salvarJogo(player.getMaxLife(), player.getBossIsDead(), player.getDanoArma(), player.getDanoBase(), andares, Game.CLASSE, CreatePlayer.nome, 100, 0, 100, 1, atacks, magicas, Game.numSave, Bag.mochila);
         }else{
             andares = LoadGame.getAndares(Game.numSave);
             switch (ccc) {
@@ -78,10 +63,27 @@ public class Jogador {
                     player = new Guerreiro();
                     break;
             }
+            tempo = LoadGame.getTime(Game.numSave);
             player.init(false);
             Bag.initBag(false);
         }
 
+    }
+    public static Atacks getAtack() {
+        return player.getAtacks()[moveEscolhido];
+    }
+    public static Magicas getMagica() {
+        return player.getMagicas()[moveEscolhido];
+    }
+    public static boolean unlockMoveOnUp(){
+        boolean canUnlocked = player.unlockMove();
+        if (canUnlocked){
+            moveUnlocked = player.getUnlockedMove();
+        }
+        return canUnlocked;
+    }
+    public static String getMoveUnlocked() {
+        return moveUnlocked;
     }
     public static void icon(Graphics g, int x, int y, int escala){
         g.drawImage(player.getSpritesBossLive()[0],x,y,player.getSpritesBossLive()[0].getWidth()*escala,player.getSpritesBossLive()[0].getHeight()*escala,null);
@@ -117,7 +119,8 @@ public class Jogador {
             frameDano =0;
         }
 
-
+        g.setColor(Color.darkGray);
+        g.fillOval(locX-5, locY+(player.getSpritesBossLive()[frameDano].getHeight()*escala)-25, (player.getSpritesBossLive()[frameDano].getWidth()*escala)+10,35);
         g.setColor(Color.BLACK);
 
         int viv=130;
@@ -168,10 +171,10 @@ public class Jogador {
         }
         return a;
     }
-    public static int atacar(){
+    public static double atacar(){
         return player.useAtack(moveEscolhido);
     }
-    public static void receberDano (int dano){
+    public static void receberDano (double dano){
         dan = true;
         player.setVida(-dano);
     }
@@ -181,7 +184,7 @@ public class Jogador {
     public static boolean magDano() {
         return player.getMagicas()[moveEscolhido].getTipo() == 1;
     }
-    public static int useMagDan() {
+    public static double useMagDan() {
         return player.useMagDan(moveEscolhido);
     }
     public static int getPontosUso(int choce, boolean atac) {
@@ -204,23 +207,23 @@ public class Jogador {
         }
 
     }
-    public static int getDano(int choicc, boolean b) {
+    public static double getDano(int choicc, boolean b) {
         if(b){
             if(player.getAtacks()[choicc]==null){return 0;}
-            return player.getAtacks()[choicc].getDano() + player.getDanoBonus();
+            return player.getAtacks()[choicc].getDano() * player.getDanoBonus();
         }else {
             if(player.getMagicas()[choicc]==null){return 0;}
-                return player.getMagicas()[choicc].getDano() + player.getDanoBonus();
+                return player.getMagicas()[choicc].getDano() * player.getDanoBonus();
         }
     }
     public static boolean isDanMag(int choicc) {
         if(player.getMagicas()[choicc]==null){return false;}
         return player.getMagicas()[choicc].getTipo()==1;
     }
-    public static int useMag() {
+    public static double useMag() {
         return player.useMagicas(moveEscolhido);
     }
-    public static void recVida(int vida) {
+    public static void recVida(double vida) {
 
         player.setVida(vida);
 
@@ -282,5 +285,8 @@ public class Jogador {
     }
     public static boolean getBossIsDead() {
         return player.getBossIsDead();
+    }
+    public static int getTempo() {
+        return tempo;
     }
 }

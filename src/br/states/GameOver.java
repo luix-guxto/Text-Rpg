@@ -6,6 +6,7 @@ import br.player.Jogador;
 import br.saves.Delete;
 import br.saves.RankingLocal;
 import br.sprites.ImageLoader;
+import br.utilidades.Utilidades;
 import org.json.simple.JSONObject;
 
 import java.awt.*;
@@ -21,6 +22,7 @@ public class GameOver implements State{
     @Override
     public void init() {
         cl = 10;
+        int tempo = (Jogador.getTempo()+Utilidades.calTempo());
         try{
             ImageLoader loader = new ImageLoader();
             gameOver = loader.loadImage("/sprites/gameover.png");
@@ -52,6 +54,7 @@ public class GameOver implements State{
         scoreJson.put("data",dataString);
         scoreJson.put("classe",Jogador.getClasse());
         scoreJson.put("nivel",nv);
+        scoreJson.put("tempo", tempo);
         RankingLocal ranking = new RankingLocal();
         scored = nome+" Sua pontuacao final foi "+score+" pontos";
         ranking.salvarRanking(scoreJson);

@@ -70,11 +70,20 @@ public class Elfo implements Player{
         if(getXp()>=getXpToUp()){
             setXp(getXp()-getXpToUp());
             this.level++;
-            this.xpToUp+=new Random().nextInt(level)*10;
-            danoBase += new Random().nextInt(3)+1;
-            maxLife += new Random().nextInt(7)+1;
-            life = maxLife;
-            System.out.println("Level up!");
+            this.xpToUp+=(new Random().nextInt(level)+1)*15;
+            danoBase += new Random().nextInt(7)+1;
+            life = maxLife += new Random().nextInt(50)+1;
+
+            for (Atacks atack : atacks) {
+                if (atack != null) {
+                    atack.setPontosDeUso(atack.getPontosDeUsoMax());
+                }
+            }
+            for (Magicas magica : magicas) {
+                if (magica != null) {
+                    magica.setPontosDeUso(magica.getPontosDeUsoMax());
+                }
+            }
         }
     }
 
@@ -84,7 +93,7 @@ public class Elfo implements Player{
     }
 
     @Override
-    public void setVida(int vida) {
+    public void setVida(double vida) {
         life+=vida;
         if(life<0){
             life=0;
@@ -102,18 +111,18 @@ public class Elfo implements Player{
     }
 
     @Override
-    public int useMagDan(int choice) {
-        return magicas[choice].useMagica()+danoArma+danoBase;
+    public double useMagDan(int choice) {
+        return magicas[choice].useMagica()*(danoArma+danoBase);
     }
 
     @Override
-    public int useAtack(int choice) {
-        return atacks[choice].useAtack()+danoArma+danoBase;
+    public double useAtack(int choice) {
+        return atacks[choice].useAtack()*(danoArma+danoBase);
     }
 
     @Override
-    public int useMagicas(int choice) {
-        return magicas[choice].useMagica()+danoBase+danoArma;
+    public double useMagicas(int choice) {
+        return magicas[choice].useMagica()*(danoArma+danoBase);
     }
 
     @Override
@@ -149,27 +158,27 @@ public class Elfo implements Player{
     @Override
     public boolean unlockMove() {
         if(level >= 5 && atacks[2] == null){
-                atacks[2] = new Atacks(5, "Chuva de Flechas", 20);
+                atacks[2] = new Atacks(8, "Chuva de Flechas", 20);
                 unlockedMove = "Chuva de Flechas";
                 return true;
         }
         else if(level >= 10 && magicas[1] == null){
-                magicas[1] = new Magicas(1, "Flecha de Raios", 1, 30);
+                magicas[1] = new Magicas(8, "Flecha de Raios", 1, 7.5);
                 unlockedMove = "Flecha de Raios";
                return true;
         }
         else if (level >= 20 && atacks[3] == null) {
-                atacks[3] = new Atacks(1, "Flecha Flamejante", 30);
+                atacks[3] = new Atacks(5, "Flecha Flamejante", 7.5);
                 unlockedMove = "Flecha Flamejante";
                 return true;
         }
         else if (level >= 30 && magicas[2] == null) {
-                magicas[2] = new Magicas(5, "Flecha de Gelo", 1, 30);
+                magicas[2] = new Magicas(8, "Flecha de Gelo", 1, 7.5);
                 unlockedMove = "Flecha de Gelo";
                 return true;
         }
         else if (level >= 50 && magicas[3] == null) {
-                magicas[3] = new Magicas(1, "Flecha Elemental", 1, 40);
+                magicas[3] = new Magicas(5, "Flecha Elemental", 1, 10);
                 unlockedMove = "Flecha Elemental";
                 return true;
         }
@@ -208,16 +217,15 @@ public class Elfo implements Player{
     public void init(boolean create) {
         if(create) {
             bossDead = false;
-            danoBase=0;
-            danoArma=0;
+            danoBase=danoArma=1;
             lvlArma=0;
             life=maxLife=100;
             xp = 0;
             xpToUp = 100;
             level = 1;
-            atacks[0] = new Atacks(25, "Atirar Flecha",10);
-            atacks[1] = new Atacks(50, "Bater com o Arco",5);
-            magicas[0] = new Magicas(5, "Recovery", 2, 20);
+            atacks[0] = new Atacks(15, "Atirar Flecha",2.5);
+            atacks[1] = new Atacks(25, "Bater com o Arco", 1.25);
+            magicas[0] = new Magicas(10, "Recovery", 2, 5);
         }else{
             for (int i = 0; i<4; i++) {
                 try{

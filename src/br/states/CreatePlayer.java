@@ -24,7 +24,7 @@ public class CreatePlayer implements State{
           "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
           "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
           "0","1","2","3","4","5","6","7","8","9","0",
-          ".",",","?","_","!","[","]","        [ CONFIRMAR ]","                                          [ APAGAR ]"
+          ".",",","?","_","!","[","]","[ CONFIRMAR ]","           [ APAGAR ]"
   };
   int tecl = 0;
   int pross=0;
@@ -34,7 +34,7 @@ public class CreatePlayer implements State{
 
   Font font1, font2;
 
-  String[] clases = {"Elfo . Facil", "Mago . Medio", "Guerreiro . Dificil"};
+  String[] clases = {"Elfo - Facil", "Mago - Medio", "Guerreiro - Dificil"};
 
   @Override
   public void init () {
@@ -242,7 +242,9 @@ public class CreatePlayer implements State{
     if(pross==1){
       if(cod==KeyEvent.VK_ENTER && wait){
         Game.CLASSE=CLASSE;
+        Game.initTime();
         Jogador.criarJogador(true);
+        Game.fistTime = Game.lastTime = System.currentTimeMillis();
         StateManager.setState(StateManager.HISTORIA);
       }
       if(cod==KeyEvent.VK_A ||cod==KeyEvent.VK_LEFT){

@@ -21,10 +21,10 @@ public class Credits implements State{
                         "E como a materia que ele estava passando",
                         "era orientacao a objetos,",
                         "decidi fazer um projeto",
-                        "Orientado a Objetos kkkk.",
+                        "Orientado a Objetos.",
                         " ",
                         "Pensado e desenvolvido por",
-                        "Luis Augusto . 1221140721",
+                        "Luix-Guxto",
                         "Projeto nao comercial,",
                         "sua venda e ilegal!",
                         "artes de terceiro,",
@@ -43,7 +43,7 @@ public class Credits implements State{
         }catch (Exception e){
             e.printStackTrace();
         }
-        fontess = Fontes.PIXEL.deriveFont(Font.PLAIN, 20);
+        fontess = Fontes.PIXEL.deriveFont(Font.PLAIN, 22);
         font1 = Fontes.FERRUM.deriveFont(Font.BOLD, 35);
     }
 

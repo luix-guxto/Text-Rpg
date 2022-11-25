@@ -5,12 +5,13 @@ import java.awt.image.BufferedImage;
 public interface Enemy {
     String getNome();
     BufferedImage[] getSprite();
-    int atack();
-    int getLife();
-    int getMaxLife();
-    void setDamage(int dano);
+    double atack();
+    double getLife();
+    double getMaxLife();
+    void setDamage(double dano);
     int getXp();
     String getNomeAtaque();
     boolean temPontos();
     int getNivel();
+    double getEscala();
 }

@@ -5,9 +5,9 @@ public class Atacks {
     private final int pontosDeUsoMax;
     private int pontosDeUso;
     private final String nomeAtaque;
-    private final int dano;
+    private final double dano;
 
-    public Atacks(int pontosDeUsoMax, String nomeAtaque, int dano){
+    public Atacks(int pontosDeUsoMax, String nomeAtaque, double dano){
         this.pontosDeUso = this.pontosDeUsoMax = pontosDeUsoMax;
         this.nomeAtaque = nomeAtaque;
         this.dano=dano;
@@ -18,7 +18,7 @@ public class Atacks {
     public int getPontosDeUso() {
         return pontosDeUso;
     }
-    public int useAtack() {
+    public double useAtack() {
         if(pontosDeUso>0) {
             this.pontosDeUso--;
             return dano;
@@ -33,7 +33,7 @@ public class Atacks {
     public String getNomeAtaque() {
         return nomeAtaque;
     }
-    public int getDano() {
+    public double getDano() {
         return dano;
     }
 

@@ -5,6 +5,7 @@ import br.background.Fundo;
 import br.inimigos.Inimigo;
 import br.fontes.Fontes;
 import br.player.Jogador;
+import br.saves.LoadGame;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

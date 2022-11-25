@@ -39,20 +39,20 @@ public class Pause implements State{
                 classe[i] = new SpriteSheet(classes).getSprite((i*32)+1,0,30,32);
             }
         }catch (Exception ignored){}
-        icon = classe[classeEscolhida];
+        icon = classe[Jogador.getClasse()];
     }
 
     @Override
     public void update() {
         options2 = new String[]{
-                "Criar pocao de vida "+Bag.mochila.getErvas()+" ! 5",
-                "Criar pocao de pp "+Bag.mochila.getFlores()+" ! 5",
-                "Melhorar mochila "+Bag.mochila.getCouro()+" ! "+Integer.parseInt((Bag.mochila.getLvlMochila()-1)*3+5+""),
-                "Melhorar arma "+Bag.mochila.getMinerios()+" ! "+Integer.parseInt(Jogador.getLvlArma()*3+5+""),
+                "Criar pocao de vida "+Bag.mochila.getErvas()+" / 5",
+                "Criar pocao de pp   "+Bag.mochila.getFlores()+" / 5",
+                "Melhorar mochila    "+Bag.mochila.getCouro()+" / "+Integer.parseInt((Bag.mochila.getLvlMochila()-1)*3+5+""),
+                "Melhorar arma       "+Bag.mochila.getMinerios()+" / "+Integer.parseInt(Jogador.getLvlArma()*3+5+""),
                 "Voltar"};
         options1 = new String[]{
-                "Usar Pocao de vida "+Bag.mochila.pocoesVida+" ! "+Bag.mochila.getLimitePocoes(),
-                "Usar pocao de pp "+Bag.mochila.pocoesPP+" ! "+Bag.mochila.getLimitePocoes(),
+                "Usar Pocao de vida "+Bag.mochila.pocoesVida+" / "+Bag.mochila.getLimitePocoes()+" - Recuperar "+Bag.mochila.lvlMochila*10+" de vida",
+                "Usar pocao de pp   "+Bag.mochila.pocoesPP+" / "+Bag.mochila.getLimitePocoes()+" - Recuperar "+Bag.mochila.lvlMochila*2+" de pp",
                 "Criacoes",
                 "Sair"};
     }
@@ -71,13 +71,13 @@ public class Pause implements State{
         g.drawImage(menu, 10, Game.HIGHT / 2 - 200, 680, 376, null);
 
         g.setColor(Color.WHITE);
-        g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 18));
+        g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 20));
         if (opt == 1){
             titulo = "PAUSE";
             g.drawString(titulo, 110, 210);
             for(int i = 0; i<options1.length;i++){
                 if(i == choice){
-                    g.setColor(Color.RED);
+                    g.setColor(Color.ORANGE);
                 }else{
                     g.setColor(Color.WHITE);
                 }
@@ -89,7 +89,7 @@ public class Pause implements State{
             g.drawString(titulo, 110, 210);
             for(int i = 0; i<options2.length;i++){
                 if(i == choice){
-                    g.setColor(Color.RED);
+                    g.setColor(Color.ORANGE);
                 }else{
                     g.setColor(Color.WHITE);
                 }
@@ -101,7 +101,7 @@ public class Pause implements State{
             g.drawString(titulo, 110, 210);
             for(int i = 0; i<options3.length;i++){
                 if(i == choice){
-                    g.setColor(Color.RED);
+                    g.setColor(Color.ORANGE);
                 }else{
                     g.setColor(Color.WHITE);
                 }
@@ -113,7 +113,7 @@ public class Pause implements State{
             g.drawString(titulo, 110, 210);
             for(int i = 0; i<options.length;i++){
                 if(i == choice){
-                    g.setColor(Color.RED);
+                    g.setColor(Color.ORANGE);
                 }else{
                     g.setColor(Color.WHITE);
                 }

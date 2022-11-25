@@ -8,6 +8,7 @@ import br.saves.Delete;
 import br.saves.LoadGame;
 import br.sprites.ImageLoader;
 import br.sprites.SpriteSheet;
+import br.utilidades.Utilidades;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -44,10 +45,10 @@ public class SelectSave implements State{
             if (files[i].exists() && LoadGame.getNome(i)!=null) {
                 haveSave[i] = true;
                 clases[i] = LoadGame.getClasse(i);
-                saves[i] = i + 1 +". "+ LoadGame.getNome(i)+" _ Nv. "+LoadGame.getNv(i);
+            saves[i] = i + 1 +": "+ LoadGame.getNome(i)+" - Nv: "+LoadGame.getNv(i)+" - Tempo: "+ Utilidades.calcTime(i);
             } else {
                 haveSave[i]=false;
-                saves[i] = i + 1 + ". Criar um novo jogo.";
+                saves[i] = i + 1 + ": Criar um novo jogo.";
             }
         }
         try {
@@ -170,6 +171,7 @@ public class SelectSave implements State{
                         Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
                         Inimigo.newInimigo();
+                        Game.fistTime= Game.lastTime  = System.currentTimeMillis();
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -180,6 +182,7 @@ public class SelectSave implements State{
                         Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
                         Inimigo.newInimigo();
+                        Game.fistTime= Game.lastTime  = System.currentTimeMillis();
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);
@@ -190,6 +193,7 @@ public class SelectSave implements State{
                         Game.CLASSE=LoadGame.getClasse(Game.numSave);
                         Jogador.criarJogador(false);
                         Inimigo.newInimigo();
+                        Game.fistTime= Game.lastTime  = System.currentTimeMillis();
                         StateManager.setState(StateManager.PREBATALHA);
                     } else {
                         StateManager.setState(StateManager.CREATE_PLAYER);

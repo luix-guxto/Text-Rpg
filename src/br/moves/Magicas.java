@@ -4,7 +4,7 @@ public class Magicas {
 
     private final int pontosDeUsoMax;
     private int pontosDeUso;
-    private final int dano;
+    private final double dano;
     String nomeMagica;
 
     private final int tipo;
@@ -13,13 +13,13 @@ public class Magicas {
     public int getTipo() {
         return tipo;
     }
-    public int getDano() {
+    public double getDano() {
         return dano;
     }
 
 
 
-    public Magicas(int pontosDeUsoMax, String nomeMagica, int tipo, int dano){
+    public Magicas(int pontosDeUsoMax, String nomeMagica, int tipo, double dano){
         this.tipo = tipo;
         this.dano = dano;
         pontosDeUso= this.pontosDeUsoMax = pontosDeUsoMax;
@@ -33,7 +33,7 @@ public class Magicas {
     public int getPontosDeUso() {
         return pontosDeUso;
     }
-    public int useMagica() {
+    public double useMagica() {
         if(pontosDeUso>0) {
             this.pontosDeUso--;
             return dano;

@@ -14,7 +14,7 @@ public class Historia implements State{
 
     Icon test;
     Font font;
-    String[] text = {"HISTORIA","","Um antigo dragao despertou.","E seu dever, como heroi,","eh deter esse terrivel dragao,","ta ferrado kkk."};
+    String[] text = {"HISTORIA","","Um antigo dragao despertou.","E seu dever, como heroi,","eh deter esse terrivel dragao,"};
     @Override
     public void init() {
         try {

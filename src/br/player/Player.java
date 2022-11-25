@@ -13,11 +13,11 @@ public interface Player {
     void setBossIsDead();
     void upLevel(); // atualizar o level
     void setXp(int xp); // aumentar xp
-    void setVida(int vida); // aumentar ou diminuir vida
+    void setVida(double vida); // aumentar ou diminuir vida
     void armaLvlUp(boolean up); // lvl up arma
-    int useMagDan(int choice);
-    int useAtack(int choice); // gastar o ponto de uso e retornar o valor do dano
-    int useMagicas(int choice); // gastar o ponto de uso e retornar o valor do dano
+    double useMagDan(int choice);
+    double useAtack(int choice); // gastar o ponto de uso e retornar o valor do dano
+    double useMagicas(int choice); // gastar o ponto de uso e retornar o valor do dano
     int getLife(); // retornar a vida do player
     int getMaxLife(); // retornar o valor de vida maxima do ‘player’
     int getXp(); // retornar o valor de xp atual
