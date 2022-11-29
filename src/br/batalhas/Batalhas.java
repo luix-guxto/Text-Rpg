@@ -310,14 +310,24 @@ public class Batalhas {
                     if(tempoBatalha == 1){
                         g.drawString("ATAQUES", 525,470);
                         g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 19));
-                        g.drawString("Dano: "+Jogador.getDano(escolha, true),450,600);
+                        double dan = Jogador.getDano(escolha, true);
+                        if(dan == Math.rint(dan)){
+                            g.drawString("DANO: "+(int)dan, 450, 600);
+                        } else {
+                            g.drawString("DANO: "+dan, 450, 600);
+                        }
                     }else{
                         g.drawString("MAGIAS", 525,470);
                         g.setFont(Fontes.PIXEL.deriveFont(Font.PLAIN, 19));
                         if(!Jogador.isDanMag(escolha)){
                             g.drawString("Recuperar vida!",450,600);
                         }else{
-                            g.drawString("Dano: "+Jogador.getDano(escolha, false),450,600);
+                            double dan = Jogador.getDano(escolha, false);
+                            if(dan == Math.rint(dan)){
+                                g.drawString("DANO: "+(int)dan, 450, 600);
+                            } else {
+                                g.drawString("DANO: "+dan, 450, 600);
+                            }
                         }
                     }
                     g.drawString("PP: "+Jogador.getPontosUso(escolha, tempoBatalha ==1)+" / "+Jogador.getPontosUsoMax(escolha, tempoBatalha ==1),450,650);
@@ -351,14 +361,26 @@ public class Batalhas {
 
             if(critPlayer){
                 g.drawString(Jogador.getNome()+" causou um critico!",50,yyy);
-                g.drawString("causando "+danoPlayer+" de dano,", 50,yyy+50);
+                if(danoPlayer == Math.rint(danoPlayer)){
+                    g.drawString("causando "+(int)danoPlayer+" de dano,", 50,yyy+50);
+                } else {
+                    g.drawString("causando "+danoPlayer+" de dano,", 50,yyy+50);
+                }
                 g.drawString("no[A] "+Inimigo.getNome() ,50,yyy+100);
             } else if (lossPlayer) {
                 g.drawString(Jogador.getNome()+" falhou no ataque!",50,yyy);
-                g.drawString("causando somente "+danoPlayer+" de dano,", 50,yyy+50);
+                if(danoPlayer == Math.rint(danoPlayer)){
+                    g.drawString("causando somente "+(int)danoPlayer+" de dano,", 50,yyy+50);
+                } else {
+                    g.drawString("causando somente "+danoPlayer+" de dano,", 50,yyy+50);
+                }
                 g.drawString("no[A] "+Inimigo.getNome() ,50,yyy+100);
             } else{
-                g.drawString(Jogador.getNome()+" causou "+danoPlayer+" de dano," ,50,yyy);
+                if(danoPlayer == Math.rint(danoPlayer)){
+                    g.drawString("causou "+(int)danoPlayer+" de dano,", 50,yyy);
+                } else {
+                    g.drawString("causou "+danoPlayer+" de dano,", 50,yyy);
+                }
                 g.drawString("no[A] "+Inimigo.getNome() ,50,yyy+50);
             }
             // Continue
@@ -369,12 +391,24 @@ public class Batalhas {
 
             if(critPlayer){
                 g.drawString(Jogador.getNome()+" cura critica!",50,yyy);
-                g.drawString("recuperando "+danoPlayer+" de vida", 50,yyy+50);
+                if(danoPlayer == Math.rint(danoPlayer)){
+                    g.drawString("recuperando "+(int)danoPlayer+" de vida", 50,yyy+50);
+                } else {
+                    g.drawString("recuperando "+danoPlayer+" de vida", 50,yyy+50);
+                }
             } else if (lossPlayer) {
                 g.drawString(Jogador.getNome()+" falhou na cura!",50,yyy);
-                g.drawString("curando somente "+danoPlayer+" de vida", 50,yyy+50);
+                if(danoPlayer == Math.rint(danoPlayer)){
+                    g.drawString("curando somente "+(int)danoPlayer+" de vida", 50,yyy+50);
+                } else {
+                    g.drawString("curando somente "+danoPlayer+" de vida", 50,yyy+50);
+                }
             } else{
-                g.drawString(Jogador.getNome()+" curou "+danoPlayer+" de vida",50,yyy);
+                if(danoPlayer == Math.rint(danoPlayer)){
+                    g.drawString("curou "+(int)danoPlayer+" de vida", 50,yyy);
+                } else {
+                    g.drawString("curou "+danoPlayer+" de vida", 50,yyy);
+                }
             }
 
 
@@ -390,13 +424,25 @@ public class Batalhas {
             if(inimigoAtacando) {
                 if (critInimigo) {
                     g.drawString(Inimigo.getNome() + " usou o ataque " + Inimigo.getNomeAtaque(), 50, yyy);
-                    g.drawString("Esse ataque causou dano critico de "+danoInimigo, 50, yyy+50);
+                    if (danoInimigo == Math.rint(danoInimigo)) {
+                        g.drawString("Esse ataque causou dano critico de "+(int)danoInimigo, 50, yyy+50);
+                    } else {
+                        g.drawString("Esse ataque causou dano critico de "+danoInimigo, 50, yyy+50);
+                    }
                 } else if (lossInimigo) {
                     g.drawString(Inimigo.getNome() + " usou o ataque " + Inimigo.getNomeAtaque(), 50, yyy);
-                    g.drawString("Errou e causou somente o dano de "+danoInimigo, 50, yyy+50);
+                    if(danoInimigo == Math.rint(danoInimigo)){
+                        g.drawString("Errou e causou somente o dano de "+(int)danoInimigo, 50, yyy+50);
+                    } else {
+                        g.drawString("Errou e causou somente o dano de "+danoInimigo, 50, yyy+50);
+                    }
                 } else {
                     g.drawString(Inimigo.getNome() + " usou o ataque " + Inimigo.getNomeAtaque(), 50, yyy);
-                    g.drawString("Esse ataque causou dano de "+danoInimigo, 50, yyy+50);
+                    if(danoInimigo == Math.rint(danoInimigo)){
+                        g.drawString("Esse ataque causou dano de "+(int)danoInimigo, 50, yyy+50);
+                    } else {
+                        g.drawString("Esse ataque causou dano de "+danoInimigo, 50, yyy+50);
+                    }
                 }
             }else {
                 g.drawString(Inimigo.getNome() + " tentou te atacar",50,yyy);

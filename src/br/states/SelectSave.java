@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 @SuppressWarnings("unused")
-public class SelectSave implements State{
+public final class SelectSave implements State{
 
         BufferedImage menu, classes;
         BufferedImage[] classe = new BufferedImage[3];

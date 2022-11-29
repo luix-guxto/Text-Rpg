@@ -3,7 +3,7 @@ package br.states;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class RankingOnline implements State {
+public final class RankingOnline implements State {
     @Override
     public void init() {
 

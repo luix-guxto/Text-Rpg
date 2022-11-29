@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 @SuppressWarnings("unused")
-public class Menu1 implements State{
+public final class Menu1 implements State{
     boolean iniciando,alt = true;
     int cor;
     Font font1, font2;

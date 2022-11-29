@@ -5,13 +5,12 @@ import br.background.Fundo;
 import br.inimigos.Inimigo;
 import br.fontes.Fontes;
 import br.player.Jogador;
-import br.saves.LoadGame;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 @SuppressWarnings("unused")
-public class PreBatalha implements State{
+public final class PreBatalha implements State{
 
     Font fonte, fonte1;
 

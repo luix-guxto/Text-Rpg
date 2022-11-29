@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 @SuppressWarnings("unused")
-public class Pause implements State{
+public final class Pause implements State{
 
     private final BufferedImage[] classe = new BufferedImage[3];
     private BufferedImage menu, icon;

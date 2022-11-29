@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
-public class CreatePlayer implements State{
+public final class CreatePlayer implements State{
 
   boolean wait = false;
 

@@ -8,7 +8,7 @@ import br.sprites.SpriteSheet;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class Aranha implements Enemy {
+public final class Aranha implements Enemy {
 
     double life, maxLife;
     Atacks[] ataques;
@@ -30,16 +30,16 @@ public class Aranha implements Enemy {
             e.printStackTrace();
         }
         this.nv = new Random().nextInt(nv)+1;
-        life = maxLife = 10 +(this.nv * 10);
+        life = maxLife = 20 +(this.nv * 15);
         ataques = new Atacks[5];
 
         //picada, patada, tiro de teia, teia fatal, embrulho venenoso
 
-        ataques[0]=new Atacks(  10,     "Picada"            , 2  + this.nv);
-        ataques[1]=new Atacks(  8 ,     "Patada"            , 4  + this.nv);
-        ataques[2]=new Atacks(  4 ,     "Tiro de teia"      , 5  + this.nv);
-        ataques[3]=new Atacks(  2 ,     "Teia fatal"        , 6  + this.nv);
-        ataques[4]=new Atacks(  1 ,     "Embrulho venenoso" , 10 + this.nv);
+        ataques[0]=new Atacks(  10,     "Picada"            , 3  * this.nv);
+        ataques[1]=new Atacks(  8 ,     "Patada"            , 4  * this.nv);
+        ataques[2]=new Atacks(  4 ,     "Tiro de teia"      , 5  * this.nv);
+        ataques[3]=new Atacks(  2 ,     "Teia fatal"        , 6  * this.nv);
+        ataques[4]=new Atacks(  1 ,     "Embrulho venenoso" , 7 * this.nv);
     }
 
     @Override

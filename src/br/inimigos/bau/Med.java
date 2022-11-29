@@ -6,7 +6,7 @@ import br.sprites.SpriteSheet;
 
 import java.awt.image.BufferedImage;
 
-public class Med implements Enemy {
+public final class Med implements Enemy {
     BufferedImage sprite;
 
     public Med() {

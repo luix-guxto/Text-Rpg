@@ -8,7 +8,7 @@ import br.sprites.SpriteSheet;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class DemonDog implements Enemy {
+public final class DemonDog implements Enemy {
 
     BufferedImage[] sprites = new BufferedImage[3];
     BufferedImage img;
@@ -16,9 +16,9 @@ public class DemonDog implements Enemy {
     Atacks[] ataques;
     String ataqueNome;
 
-    public DemonDog(int nv) {
-        this.nv = new Random().nextInt(nv) + 1;
-        life = maxLife = 20 + (this.nv * 20);
+    public DemonDog(int a) {
+        this.nv = new Random().nextInt(a-5) + 6;
+        life = maxLife = 25 + (this.nv * 30);
         ataques = new Atacks[5];
         try {
             ImageLoader loader = new ImageLoader();
@@ -31,11 +31,11 @@ public class DemonDog implements Enemy {
         }
 
         //ataques
-        ataques[0] = new Atacks(10, "Patada", 4 + this.nv);
-        ataques[1] = new Atacks(8, "Rabo giratorio", 8 + this.nv);
-        ataques[2] = new Atacks(4, "Garra demoniaca", 10 + this.nv);
-        ataques[3] = new Atacks(2, "Uivo das almas", 13 + this.nv * 2);
-        ataques[4] = new Atacks(1, "Pacto mortal", 14 + this.nv * 2);
+        ataques[0] = new Atacks(10, "Patada", 5 * this.nv);
+        ataques[1] = new Atacks(8, "Rabo giratorio", 6 * this.nv);
+        ataques[2] = new Atacks(4, "Garra demoniaca", 7 * this.nv);
+        ataques[3] = new Atacks(2, "Uivo das almas", 8 * this.nv );
+        ataques[4] = new Atacks(1, "Pacto mortal", 9 * this.nv);
     }
 
     @Override
@@ -97,6 +97,6 @@ public class DemonDog implements Enemy {
 
     @Override
     public double getEscala() {
-        return 2.7;
+        return 2.9;
     }
 }

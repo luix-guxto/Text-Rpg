@@ -49,7 +49,7 @@ public class LoadGame {
             atacks[i] = new Atacks(Integer.parseInt(ataque[i]
                                     .get("56dd546d546").toString()), // pontos de uso max
                                     ataque[i].get("fifjhbfhbbh").toString(), // nome
-                    Integer.parseInt(ataque[i].get("ldkflyhvf").toString())); // dano
+                    Double.parseDouble(ataque[i].get("ldkflyhvf").toString())); // dano
             atacks[i].setPontosDeUso(Integer.parseInt(ataque[i]
                                     .get("798f7ffdfdfge").toString())); // pontos de uso
         }
@@ -65,8 +65,8 @@ public class LoadGame {
             magica[i] = (JSONObject) magicas.get(""+i);
             magicks[i] = new Magicas(Integer.parseInt(magica[i].get("56dd546d546").toString()), // pontos de uso max
                                     magica[i].get("fifjhbfhbbh").toString(), // nome
-                                    Integer.parseInt(magica[i].get("iugfoygf").toString()), // dano
-                                    Integer.parseInt(magica[i].get("ldkflyhvf").toString())); // mana
+                                    Integer.parseInt(magica[i].get("iugfoygf").toString()), // tipo
+                                    Double.parseDouble(magica[i].get("ldkflyhvf").toString())); // dano
                                     magicks[i].setPontosDeUso(Integer.parseInt(magica[i].get("798f7ffdfdfge").toString())); // pontos de uso
         }
         return magicks;
@@ -132,5 +132,10 @@ public class LoadGame {
     public static boolean getBossIsDead(int numSave) {
         load(numSave);
         return Boolean.parseBoolean(obj.get("fhdghdghg").toString());
+    }
+
+    public static int getLvlArma(int numSave) {
+        load(numSave);
+        return Integer.parseInt(obj.get("iugpoiugfp0g27272727").toString());
     }
 }

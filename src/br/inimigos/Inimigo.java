@@ -35,7 +35,7 @@ public class Inimigo {
         frameCrescendo =false;
 
         // Iniciar inimigo
-        if(new Random().nextInt(6)==0){
+        if(new Random().nextInt(5)==0 && isInimigo){
             int rn = new Random().nextInt(3);
             if(rn==0) {
                 inimigo = new Bau();
@@ -58,10 +58,10 @@ public class Inimigo {
                     System.out.println("inimigo Boss");
                     System.exit(0);
                 }
-                else if (rn >= 10) {
+                else if (rn >= 6) {
                     inimigo = new DemonDog(Jogador.getNivel());
                 }
-                else if (rn >= 5) {
+                else if (rn >= 4) {
                     inimigo = new FireWolf(Jogador.getNivel());
                 }
                 else if (rn >= 2) {
@@ -120,7 +120,17 @@ public class Inimigo {
         g.setColor(Color.BLACK);
         g.fillRect(xx,yy, llargura,aaltura);
         g.setColor(Color.WHITE);
-        g.drawString("Vida: "+inimigo.getLife()+"/"+inimigo.getMaxLife(), (int) (locX+((-g.getFontMetrics().stringWidth("Vida: "+inimigo.getLife()+"/"+inimigo.getMaxLife())+(inimigo.getSprite()[frameDano].getWidth()*escala))/2)), locY-60);
+        double vidaMax = inimigo.getMaxLife();
+        double vida = inimigo.getLife();
+        String v = vida+"";
+        String maxV = ""+vidaMax;
+        if(vida == Math.rint(vida)){
+            v =""+ (int) vida;
+        }
+        if((int)vidaMax == Math.ceil(vidaMax)){
+            maxV =""+ (int) vidaMax;
+        }
+        g.drawString("Vida: "+v+"/"+maxV, (int) (locX+((-g.getFontMetrics().stringWidth("Vida: "+v+"/"+maxV)+(inimigo.getSprite()[frameDano].getWidth()*escala))/2)), locY-60);
         g.drawString(inimigo.getNome(), (int) (locX+((-g.getFontMetrics().stringWidth(inimigo.getNome())+(inimigo.getSprite()[frameDano].getWidth()*escala))/2)),locY-35);
         g.setColor(Color.BLACK);
 

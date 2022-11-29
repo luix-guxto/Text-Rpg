@@ -23,7 +23,6 @@ public class Game implements Runnable
 
     public Game(String[] args)
     {
-        thread = new Thread(this);
         fistTime = lastTime = System.currentTimeMillis();
         ds = new Display        ("Text-RPG", WIDTH, HIGHT, "/sprites/icon.png") ;
         sm = new StateManager   ()                                              ;

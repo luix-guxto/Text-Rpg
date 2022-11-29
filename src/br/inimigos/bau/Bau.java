@@ -6,7 +6,7 @@ import br.sprites.SpriteSheet;
 
 import java.awt.image.BufferedImage;
 
-public class Bau implements Enemy {
+public final class Bau implements Enemy {
     private BufferedImage sprite;
     public Bau(){
         try {

@@ -33,7 +33,7 @@ public class SaveGame {
     }
 
     // cria o objeto para salvar e inicia o save
-    public void salvarJogo(int maxLife, boolean bossIsDead, int danoArma, int danoBase,int andares, int classe, String nome, int vida, int xp,int xpToUp, int level, Atacks[] atacks, Magicas[] magicas, int numSave, Mochila mochilas){
+    public void salvarJogo(int lvlArma, int maxLife, boolean bossIsDead, int danoArma, int danoBase,int andares, int classe, String nome, int vida, int xp,int xpToUp, int level, Atacks[] atacks, Magicas[] magicas, int numSave, Mochila mochilas){
         // objetos json
         JSONObject obj = new JSONObject();
         JSONObject ataques = new JSONObject();
@@ -123,6 +123,7 @@ public class SaveGame {
         obj.put("uyfiuyfuyf", false);
         obj.put("uyfiuyfuyfiuyfuyfiuyfuyfiuyf", true);
         obj.put("syufduyfyf", (Jogador.getTempo()+Utilidades.calTempo()));
+        obj.put("iugpoiugfp0g27272727", lvlArma);
 
         save(obj, numSave);
     }

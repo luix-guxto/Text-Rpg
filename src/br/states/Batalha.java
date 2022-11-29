@@ -7,7 +7,7 @@ import br.batalhas.Batalhas;
 import java.awt.*;
 
 @SuppressWarnings("unused")
-public class Batalha implements State{
+public final class Batalha implements State{
     @Override
     public void init() {
         Batalhas.init();

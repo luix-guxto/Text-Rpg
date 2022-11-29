@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Menu implements State{
+public final class Menu implements State{
 
     Font font1, font2;
     SpriteSheet img;

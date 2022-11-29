@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
 
-public class GameOver implements State{
+public final class GameOver implements State{
     String scored;
     BufferedImage gameOver;
     int cl;

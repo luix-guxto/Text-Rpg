@@ -12,7 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 @SuppressWarnings("unused")
-public class PosBatalha implements State{
+public final class PosBatalha implements State{
 
     private int xp, lvl, qtdItens, coolDown, xpUpper, xpToUp, xpInicial;
     private boolean unlockedMove, isBau;
@@ -62,7 +62,7 @@ public class PosBatalha implements State{
         }
         Jogador.addAndares();
         SaveGame sv = new SaveGame();
-        sv.salvarJogo(Jogador.getVidaMax(),Jogador.getBossIsDead(),Jogador.getDanoArma(), Jogador.getDanoBase(), Jogador.getAndares(), Jogador.getClasse(), Jogador.getNome(), Jogador.getVida(), Jogador.getXp(), Jogador.getXpToLvUp(), Jogador.getNivel(), Jogador.getAtacks(), Jogador.getMagicas(), Game.numSave, Bag.mochila);
+        sv.salvarJogo(Jogador.getLvlArma(),Jogador.getVidaMax(),Jogador.getBossIsDead(),Jogador.getDanoArma(), Jogador.getDanoBase(), Jogador.getAndares(), Jogador.getClasse(), Jogador.getNome(), Jogador.getVida(), Jogador.getXp(), Jogador.getXpToLvUp(), Jogador.getNivel(), Jogador.getAtacks(), Jogador.getMagicas(), Game.numSave, Bag.mochila);
         Inimigo.newInimigo();
     }
 
@@ -86,7 +86,7 @@ public class PosBatalha implements State{
         g.setColor(Color.BLACK);
         g.setFont(Fontes.PIXEL.deriveFont(Font.BOLD, 28));
         String title;
-        if(Inimigo.isInimigo()){
+        if(isBau){
             title = "Recompensas do andar: "+Jogador.getAndares();
         }else{
             title = "Recompensas do bau - Andar: "+Jogador.getAndares();

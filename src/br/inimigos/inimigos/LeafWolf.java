@@ -8,7 +8,7 @@ import br.sprites.SpriteSheet;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class LeafWolf implements Enemy {
+public final class LeafWolf implements Enemy {
 
     BufferedImage[] sprites = new BufferedImage[3];
     BufferedImage img;
@@ -17,9 +17,9 @@ public class LeafWolf implements Enemy {
     Atacks[] ataques;
     String ataqueNome;
 
-    public LeafWolf(int nv) {
-        this.nv = new Random().nextInt(nv) + 1;
-        life = maxLife = 10 + (this.nv * 10);
+    public LeafWolf(int a) {
+        this.nv = new Random().nextInt(a -1) + 2;
+        life = maxLife = 20 + (this.nv * 25);
         ataques = new Atacks[5];
         try {
             ImageLoader loader = new ImageLoader();
@@ -32,11 +32,11 @@ public class LeafWolf implements Enemy {
         }
 
         //ataques
-        ataques[0] = new Atacks(10, "Patada", 4 + this.nv);
-        ataques[1] = new Atacks(8, "Rabo giratorio", 8 + this.nv);
-        ataques[2] = new Atacks(4, "Garra de folhas", 8 + this.nv);
-        ataques[3] = new Atacks(2, "Uivo da floresta", 10 + this.nv);
-        ataques[4] = new Atacks(1, "Mordida urticante", 10 + this.nv * 2);
+        ataques[0] = new Atacks(10, "Patada", 4 * this.nv);
+        ataques[1] = new Atacks(8, "Rabo giratorio", 5 * this.nv);
+        ataques[2] = new Atacks(4, "Garra de folhas", 6 * this.nv);
+        ataques[3] = new Atacks(2, "Uivo da floresta", 7 * this.nv);
+        ataques[4] = new Atacks(1, "Mordida urticante", 8 * this.nv );
     }
 
     @Override

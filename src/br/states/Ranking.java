@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 @SuppressWarnings("unused")
-public class Ranking implements State{
+public final class Ranking implements State{
     ArrayList<Pontuacao> ranking;
     @Override
 

@@ -8,7 +8,7 @@ import br.sprites.SpriteSheet;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class FireWolf implements Enemy {
+public final class FireWolf implements Enemy {
 
     BufferedImage[] sprites = new BufferedImage[3];
     BufferedImage img;
@@ -17,9 +17,9 @@ public class FireWolf implements Enemy {
     Atacks[] ataques;
     String ataqueNome;
 
-    public FireWolf(int nv) {
-        this.nv = new Random().nextInt(nv) + 1;
-        life = maxLife = 13 + (this.nv * 13);
+    public FireWolf(int a) {
+        this.nv = new Random().nextInt(a-3) + 4;
+        life = maxLife = 20 + (this.nv * 28);
         ataques = new Atacks[5];
         try {
             ImageLoader loader = new ImageLoader();
@@ -32,11 +32,11 @@ public class FireWolf implements Enemy {
         }
 
         //ataques
-        ataques[0] = new Atacks(10, "Patada", 4 + this.nv);
-        ataques[1] = new Atacks(8, "Rabo giratorio", 8 + this.nv);
-        ataques[2] = new Atacks(4, "Garra de fogo", 9 + this.nv);
-        ataques[3] = new Atacks(2, "Uivo de calor", 15 + this.nv);
-        ataques[4] = new Atacks(1, "Mordida de lava", 15 + this.nv * 2);
+        ataques[0] = new Atacks(10, "Patada", 4.5 * this.nv);
+        ataques[1] = new Atacks(8, "Rabo giratorio", 5.5 * this.nv);
+        ataques[2] = new Atacks(4, "Garra de fogo", 6.5 * this.nv);
+        ataques[3] = new Atacks(2, "Uivo de calor", 7.5 * this.nv);
+        ataques[4] = new Atacks(1, "Mordida de lava", 8.5 * this.nv);
     }
 
     @Override
@@ -77,7 +77,7 @@ public class FireWolf implements Enemy {
 
     @Override
     public int getXp() {
-        return 50 + (nv * 20);
+        return 50 + (nv * 15);
     }
     @Override
     public String getNomeAtaque() {

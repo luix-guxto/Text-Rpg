@@ -5,6 +5,9 @@ import br.mochila.Bag;
 import br.moves.Atacks;
 import br.moves.Magicas;
 import br.fontes.Fontes;
+import br.player.classes.Elfo;
+import br.player.classes.Guerreiro;
+import br.player.classes.Mago;
 import br.saves.LoadGame;
 import br.saves.SaveGame;
 import br.states.CreatePlayer;
@@ -49,7 +52,7 @@ public class Jogador {
             Magicas[] magicas = player.getMagicas();
             andares = 0;
             Bag.initBag(true);
-            saveGame.salvarJogo(player.getMaxLife(), player.getBossIsDead(), player.getDanoArma(), player.getDanoBase(), andares, Game.CLASSE, CreatePlayer.nome, 100, 0, 100, 1, atacks, magicas, Game.numSave, Bag.mochila);
+            saveGame.salvarJogo(player.getLvlArma(),player.getMaxLife(), player.getBossIsDead(), player.getDanoArma(), player.getDanoBase(), andares, Game.CLASSE, CreatePlayer.nome, 100, 0, 100, 1, atacks, magicas, Game.numSave, Bag.mochila);
         }else{
             andares = LoadGame.getAndares(Game.numSave);
             switch (ccc) {

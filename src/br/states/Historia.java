@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 @SuppressWarnings("unused")
-public class Historia implements State{
+public final class Historia implements State{
 
     Icon test;
     Font font;

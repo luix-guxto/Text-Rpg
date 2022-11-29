@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 @SuppressWarnings("unused")
-public class Credits implements State{
+public final class Credits implements State{
     // 700 433
 
     BufferedImage img;
