@@ -106,8 +106,8 @@ O Jogo ainda está em processo de desenvolvimento, e já foi atribuido as seguin
 - [x] Sistema de melhorias
 - [x] Classes (Elfo, Mago e Guerreiro)
 - [ ] Outros inimigos (Dragões, etc)
-- [ ] Game-Over Screen
-- [ ] Ranking Local
+- [x] Game-Over Screen
+- [x] Ranking Local
 - [ ] Ranking Online
 - [x] Salvar jogo
 - [x] Carregar jogo
